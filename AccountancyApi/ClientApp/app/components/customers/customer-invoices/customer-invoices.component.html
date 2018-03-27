@@ -1,0 +1,39 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+      <h3>Faktury:</h3>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped table-hover" style="text-align: center;">
+      <thead class="bg-primary col-sm-12">
+        <tr>
+          <td class="col-sm-3">Numer faktury:</td>
+          <td class="col-sm-2">Kwota:</td>
+          <td class="col-sm-3">Data wystawienia:</td>
+          <td class="col-sm-2">Termin Płatności:</td>
+          <td class="col-sm-2">Rozliczony:</td>
+        </tr>
+      </thead>
+      <tbody>
+         <tr *ngFor="let invoice of invoices;">
+            <td class="col-sm-3">
+              <a [routerLink]="['/invoice/details']" [queryParams]="{number: invoice['invoiceNumber']}">
+                {{invoice.invoiceNumber}}/{{invoice.invoiceDate | date:'yyyy'}}
+              </a>
+            </td>
+            <td class="col-sm-2">{{invoice.itemsPriceTotal | currencyPipe}} zł</td>
+            <td class="col-sm-3">{{invoice.invoiceDate | date:'dd.MM.yyyy'}}</td>
+            <td class="col-sm-2">{{invoice.paymentDate | date:'dd.MM.yyyy'}}</td>
+            <td class="col-sm-2">
+              <span class="glyphicon glyphicon-ok" *ngIf="invoice.accounted;"></span>
+              <span *ngIf="!invoice.accounted;">
+                <input type="checkbox" (click)="AddToAccountedList($event, invoice.invoiceNumber);">
+              </span>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="panel-footer">
+    <button type="button" class="btn btn-primary" [disabled]="setteledInvoices.length == 0" (click)="SettleInvoices();">Rozlicz zaznaczone</button>
+  </div>
+</div>

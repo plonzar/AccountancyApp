@@ -1,0 +1,12 @@
+.table-striped tbody {
+  height: 250px;
+  overflow-y: auto;
+  width: 100%;
+}
+.table-striped thead, .table-striped tbody, .table-striped tr, .table-striped td, .table-striped th {
+  display: block;
+}
+.table-striped tbody td, .table-striped thead > tr> td {
+  float: left;
+  border-bottom-width: 0;
+}

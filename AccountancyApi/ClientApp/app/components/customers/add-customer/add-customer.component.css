@@ -1,0 +1,15 @@
+.center-panel{
+    width: 70%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+input.ng-touched.ng-invalid{
+  background-color: #ffb3b3;
+  border: 2px solid red;
+}
+
+input.ng-touched.ng-valid{
+  background-color: #b3ff99;
+  border: 2px solid #2db300;
+}

@@ -1,0 +1,173 @@
+<div class="background vertical-center">
+    <div class="register-box">
+      <div class="title col-sm-12" style="text-align: center;">
+        <h2>Rejsetracja</h2>
+      </div>
+      <div class="well col-sm-12">
+        <form (ngSubmit)="Register()" #registerForm="ngForm">
+          <div class="col-sm-12">
+            <h4>Dane Użytkownika:</h4>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-2">
+              <label for="userName">Login:</label>
+            </div>
+            <div class="col-sm-10">
+              <input type="text" 
+              name="userName" 
+              id="userName" 
+              class="form-control" 
+              [ngModel]="registerData.userName" 
+              #login="ngModel"
+              autocomplete="off"
+              (blur)="IsAvailable('name', login.value)"
+              placeholder="Login"
+              required/>
+            </div>
+          </div>
+          <div class="col-sm-12"><br></div>
+
+          <div class="form-group">
+            <div class="col-sm-2">
+              <label for="password">Hasło:</label>
+            </div>
+            <div class="col-sm-10">
+              <input type="password" 
+              name="password" 
+              id="password" 
+              class="form-control" 
+              [ngModel]="registerData.password" 
+              autocomplete="off" 
+              #password="ngModel"
+              required/>
+            </div>
+          </div>
+          <div class="col-sm-12"><br></div>
+
+          <div class="form-group">
+            <div class="col-sm-2">
+              <label for="email">Email:</label>
+            </div>
+            <div class="col-sm-10">
+              <input type="email" 
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+              name="email" 
+              id="email" 
+              class="form-control"
+              [ngModel]="registerData.email" 
+              #email="ngModel"
+              placeholder="nazwa@mail.com"
+              (blur)="IsAvailable('email', email.value)"
+              autocomplete="off" 
+              required/>
+            </div>
+          </div>
+          <div class="col-sm-12"><br></div>
+
+          <div class="col-sm-12">
+            <hr style="border-color: black;">
+            <h4>Dane Firmy:</h4>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-2">
+              <label for="name">Nazwa:</label>
+            </div>
+            <div class="col-sm-10">
+              <input 
+              type="text" 
+              name="name" 
+              id="name" 
+              class="form-control" 
+              [ngModel]="registerData.name" 
+              #name="ngModel" 
+              placeholder="Nazwa firmy"
+              required/>
+            </div>
+          </div>
+          <div class="col-sm-12"><br></div>
+
+          <div class="form-group">
+            <div class="col-sm-2">
+              <label for="address">Ulica:</label>
+            </div>
+            <div class="col-sm-10">
+              <input 
+              type="text" 
+              name="address" 
+              id="address" 
+              class="form-control" 
+              [ngModel]="registerData.address" 
+              #address="ngModel" 
+              placeholder="np. Kościuszki 4a"
+              required/>
+            </div>
+          </div>
+          <div class="col-sm-12"><br></div>
+
+          <div class="form-group">
+            <div class="col-sm-2">
+              <label for="postCode">Kod pocztowy:</label>
+            </div>
+            <div class="col-sm-10">
+              <input 
+              type="text" 
+              name="postCode" 
+              id="postCode" 
+              class="form-control" 
+              [ngModel]="registerData.postCode" 
+              #postCode="ngModel" 
+              required 
+              pattern="[0-9]{2}-[0-9]{3}"
+              placeholder="np. 12-345"
+              maxlength="6"/>
+            </div>
+          </div>
+          <div class="col-sm-12"><br></div>
+
+          <div class="form-group">
+            <div class="col-sm-2">
+              <label for="city">Miasto:</label>
+            </div>
+            <div class="col-sm-10">
+              <input type="text" name="city" id="city" class="form-control" [ngModel]="registerData.city" #city="ngModel" required/>
+            </div>
+          </div>
+          <div class="col-sm-12"><br></div>
+
+          <div class="form-group">
+            <div class="col-sm-2">
+              <label for="nip">NIP:</label>
+            </div>
+            <div class="col-sm-10">
+              <input 
+              type="text" 
+              name="nip" 
+              id="nip" 
+              class="form-control" 
+              [ngModel]="registerData.nip" 
+              #nip="ngModel" 
+              required  
+              pattern="[0-9]{10}"
+              placeholder="np. 1234567890"
+              maxlength="10"/>
+            </div>
+          </div>
+          <div class="col-sm-12"><hr style="border-color: black;"></div>
+
+          <div class="form-group">
+            <div class="col-sm-2">
+              <label for="nip">Klucz dostępu:</label>
+            </div>
+            <div class="col-sm-10">
+              <input type="text" name="specialKey" id="specialKey" class="form-control" [ngModel]="registerData.specialKey" #nip="ngModel" required/>
+            </div>
+          </div>
+          <div class="col-sm-12"><br></div>
+          <div class="col-sm-12" style="text-align: center;">
+            <button type="submit" class="btn btn-primary" [disabled]="!registerForm.valid">Zarejestruj się</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

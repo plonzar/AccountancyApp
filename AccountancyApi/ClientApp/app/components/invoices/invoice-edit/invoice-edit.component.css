@@ -1,0 +1,21 @@
+input.ng-touched.ng-invalid{
+  background-color: #ffb3b3;
+  border: 2px solid red;
+}
+
+.autocomplete-dropdown-list{
+    position: absolute;
+    z-index: 1;
+    max-height: 100px;
+    overflow-y: auto;
+    background-color: white;
+    transition: none;
+}
+
+.autocomplete-dropdown-item {
+    background-color: white;
+}
+
+.autocomplete-dropdown-item:hover{
+  background: lightgray;
+}

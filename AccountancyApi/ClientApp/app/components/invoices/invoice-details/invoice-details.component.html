@@ -1,0 +1,66 @@
+<div class="col-sm-12">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h2>Faktura nr {{invoice.invoiceNumber}}/{{invoice.invoiceDate | date:'yyyy'}}</h2>
+    </div>
+    <div class="panel-body" id="invoiceContent" #invoiceContent style="background-color: white;">
+      <div class="col-sm-12"><br></div>
+      <div class="col-sm-6">
+        <strong>Data wystawnienia: {{invoice.invoiceDate | date:'dd-MM-yyyy'}}</strong>
+        <h3>Nabywca:</h3>
+        <p>{{invoice.customer.name}}</p>
+        <p>{{invoice.customer.postCode}} {{invoice.customer.city}}</p>
+        <p>{{invoice.customer.address}}</p>
+        <p>NIP: {{invoice.customer.nip}}</p>
+      </div>
+      <div class="col-sm-6">
+        <div class="pull-right">
+          <div class="col-sm-12">
+            <br>
+            <h3>Sprzedawca:</h3>
+            <p>{{user.name}}</p>
+            <p>{{user.postCode}} {{user.city}}</p>
+            <p>{{user.address}}</p>
+            <p>NIP: {{user.nip}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12" style="margin-top: 30px; margin-bottom: 40px; text-align: center;">
+          <h3>FV {{invoice.invoiceNumber}}/{{invoice.invoiceDate | date:'yyyy'}}</h3>
+      </div>
+      <table class="table table-bordered col-sm-12" style="text-align: center;">
+        <thead>
+          <tr>
+            <td>Nazwa:</td>
+            <td>Jednostkowa cena netto:</td>
+            <td>Ilość:</td>
+            <td>Całkowita cena netto:</td>
+            <td>Stawka podatku:</td>
+            <td>Cena brutto:</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of invoice.invoiceItems">
+            <td>{{item.name}}</td>
+            <td>{{item.unitPriceWithoutTax | currencyPipe}}</td>
+            <td>{{item.amount}}</td>
+            <td>{{item.totalPriceWithoutTax | currencyPipe}}</td>
+            <td>{{item.tax}}%</td>
+            <td>{{item.totalPriceWithTax | currencyPipe}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="col-sm-6">
+        <h3>Do zapłaty: {{invoice.itemsPriceTotal | currencyPipe}} zł</h3>
+        <p>Sposób płatności: {{invoice.paymentType}}</p>
+        <p>Termin płatności: {{invoice.paymentDate | date:'dd-MM-yyyy'}}</p>
+      </div>
+    </div>
+    <div class="panel-footer">
+      <button type="button" class="btn btn-default" [routerLink]="['/']">Wróć do listy</button>
+      <button type="button" class="btn btn-warning" [routerLink]="['/invoice/edit', invoiceNumber]">Edytuj</button>
+      <button type="button" class="btn btn-danger" (click)="DeleteInvoice()" title="Można usunąć tylko ostatnią fakturę">Usuń</button>
+      <button type="button" class="btn btn-primary" (click)="GeneratePDF()">Drukuj PDF</button>
+    </div>
+  </div>
+</div>

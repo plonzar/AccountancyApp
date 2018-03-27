@@ -1,0 +1,152 @@
+<div class="col-sm-12">
+  <h2>{{title}}</h2>
+  <hr/>
+</div>
+<div>
+  <form [formGroup]="invoiceForm" (ngSubmit)="SubmitInvoice()" class="col-sm-12" autocomplete="off">
+    <div class="col-sm-12">
+      <div class="form-gropu row">
+        <label class="col-sm-2 col-form-label" for="customerName">Nazwa:</label>
+        <div class="col-sm-7">
+            <input type="text" class="form-control" formControlName="customerName" id="customerName" autocomplete="off">
+            <div class="autocomplete-dropdown-list col-sm-12" *ngIf="!selected">
+              <div style="cursor: pointer" *ngFor="let name of filteredResult | async;" (click)="AutocompleteForm(name)" class="autocomplete-dropdown-item">
+                {{name}}
+              </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+          <small class="text-danger" 
+            *ngIf="!invoiceForm.get('customerName').valid && invoiceForm.get('customerName').touched"
+            >Proszę podać nazwę</small>
+        </div>
+      </div>
+      <div class="form-gropu row" style="margin-top: 10px;">
+        <label class="col-sm-2 col-form-label" for="customerCity">Miejscowość:</label>
+        <div class="col-sm-7">
+          <input formControlName="customerCity" type="text" class="form-control" id="customerCity"  placeholder="Miejscowość" autocomplete="off">
+        </div>
+        <div class="col-sm-3">
+          <small class="text-danger" 
+            *ngIf="!invoiceForm.get('customerCity').valid && invoiceForm.get('customerCity').touched"
+            >Proszę podać miejscowość</small>
+        </div>
+      </div>
+      <div class="form-gropu row" style="margin-top: 10px;">
+        <label class="col-sm-2 col-form-label" for="customerPostCode">Kod poczotwy:</label>
+        <div class="col-sm-7">
+          <input formControlName="customerPostCode" type="text" class="form-control" id="customerPostCode"  placeholder="Kod pocztowy" autocomplete="off">
+        </div>
+        <div class="col-sm-3">
+          <small class="text-danger"
+           *ngIf="!invoiceForm.get('customerPostCode').valid && invoiceForm.get('customerPostCode').touched"
+           >Prosze podać kod pocztowy</small>
+        </div>
+      </div>
+      <div class="form-gropu row" style="margin-top: 10px;">
+        <label class="col-sm-2 col-form-label" for="customerStreet">Adres:</label>
+        <div class="col-sm-7">
+          <input formControlName="customerStreet" type="text" class="form-control" id="customerStreet"  placeholder="Adres" autocomplete="off">
+        </div>
+        <div class="col-sm-3">
+          <small class="text-danger"
+            *ngIf="!invoiceForm.get('customerStreet').valid && invoiceForm.get('customerStreet').touched"
+            >Prosze podać adres</small>
+        </div>
+      </div>
+      <div class="form-gropu row" style="margin-top: 10px;">
+        <label class="col-sm-2 col-form-label" for="customerNIP">NIP:</label>
+        <div class="col-sm-7">
+          <input formControlName="customerNIP" type="text" class="form-control" id="customerNIP" maxlength="10" placeholder="format NIP: 1234567890" autocomplete="off">
+        </div>
+        <div class="col-sm-3">
+          <small class="text-danger"
+            *ngIf="!invoiceForm.get('customerNIP').valid && invoiceForm.get('customerNIP').touched"
+            >Proszę podać poprawny NIP</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12" style="margin-top: 20px;">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <td>Nazwa:</td>
+            <td>Cena jenostkowa netto:</td>
+            <td>Ilość:</td>
+            <td>Stawka podatku:</td>
+            <td>Całkowita cena netto:</td>
+            <td>Całkowita cena brutto:</td>
+            <td>Usuń:</td>
+          </tr>
+        </thead>
+        <tbody formArrayName="invoiceItems">
+          <tr *ngFor="let invoiceItem of invoiceForm.get('invoiceItems')['controls']; let i=index;" [formGroupName]="i">
+            <td><input 
+                  class="form-control" 
+                  type="text" 
+                  formControlName="itemName"></td>
+            <td><input class="form-control" 
+                  type="number" 
+                  formControlName="itemUnitPriceWithoutTax" 
+                  (blur)="ItemUnitPriceWithoutTaxChanged(invoiceItem)"></td>
+            <td><input 
+                  class="form-control" 
+                  type="number" 
+                  formControlName="itemAmount" 
+                  (blur)="ItemAmountChanged(invoiceItem)"></td>
+            <td>
+              <select 
+                class="form-control" 
+                type="number" 
+                formControlName="itemTax"
+                (change)="ItemTaxChanged(invoiceItem)">
+                <option *ngFor="let tax of taxValues['values'];" value="{{tax}}">{{tax}}</option>
+              </select>
+            </td>
+            <td>
+              <input 
+                  class="form-control" 
+                  type="number" 
+                  formControlName="itemTotalPriceWithoutTax" 
+                  (blur)="ItemTotalPriceWithoutTaxChanged(invoiceItem)">
+            </td>
+            <td>
+              <input 
+                  class="form-control" 
+                  type="number" 
+                  formControlName="itemTotalPriceWithTax"
+                  (blur)="ItemTotalPriceWithTaxChanged(invoiceItem)">
+            </td>
+            <td>
+              <button type="button" class="btn btn-sm btn-danger" (click)="RemoveItemRow(i)" [disabled]="invoiceForm.get('invoiceItems').length <= 1">X</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <hr>
+        <div class="col-sm-2">
+          <h4>Sposób płatności:</h4>
+        </div>
+        <div class="col-sm-2">
+          <select class="form-control" formControlName="paymentType">
+            <option value="gotówka">gotówka</option>
+            <option value="przelew">przelew</option>
+          </select>
+        </div>
+        <div class="col-sm-2">
+            <h4>Termin zapłaty:</h4>
+        </div>
+        <div class="col-sm-3">
+          <input class="form-control" type="date" formControlName="paymentDate" #paymentDate>
+        </div>
+        <div class="col-sm-3" style="text-align: right;">
+          <h4>Suma: {{sum | currencyPipe}} zł</h4>
+        </div>
+    </div>
+    <div class="col-sm-12" style="margin-top: 50px;">
+      <button type="button" class="btn btn-default" [disabled]="!invoiceForm.get('invoiceItems').valid" (click)="AddItemRow()">dodaj wiersz</button>
+      <button type="submit" class="btn btn-info" [disabled]="!invoiceForm.valid">{{workMode}}</button>
+      <button type="button" class="btn btn-warning" (click)="ClearForm()">Wyczyść formularz</button>
+    </div>
+  </form>
+</div>

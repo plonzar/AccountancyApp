@@ -1,0 +1,18 @@
+<div class="container">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a routerLink="/" class="navbar-brand">Rachunkowość</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li routerLinkActive="active"><a [routerLink]="['invoice']">Faktury</a></li>
+          <li routerLinkActive="active"><a [routerLink]="['customer']">Klienci</a></li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          <li routerLinkActive="active"><a (click)="Logout()" style="cursor: pointer;">Wyloguj</a></li>
+          <li routerLinkActive="active"><a [routerLink]="['user/edit']">Twoje konto</a></li>
+        </ul>
+    </div>
+  </nav>
+</div>

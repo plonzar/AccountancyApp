@@ -1,0 +1,32 @@
+input.ng-touched.ng-invalid{
+  background-color: #ffb3b3;
+  border: 2px solid red;
+}
+
+.register-box{
+  position: relative;
+  display: block;
+  width: 60%;
+  margin-top: 10%;
+  margin-bottom: 10%;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.background{
+  background: #42a5f5;
+  height: 100%;
+}
+
+.title{
+  background: white;
+  text-align: center;
+  border-radius: 5px 5px 0px 0px;
+}
+
+.vertical-center {
+  min-height: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}

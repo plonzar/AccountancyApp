@@ -1,0 +1,48 @@
+<div>
+  <div>
+    <h2>Baza klientów:</h2>
+    <hr/>
+  </div>
+  <div class="col-xs-6" style="margin-bottom: 20px;">
+    <input type="text" class="form-control" placeholder="wyszukaj po NIP lub nazwie klienta" [(ngModel)]="searchParam"/>
+  </div>
+  <div class="col-xs-3">
+      <button class="btn btn-primary" [routerLink]="['add']">Dodaj Nowego Klienta</button>
+  </div>
+  <div>
+    <table class="table table-striped">
+      <thead class="bg-primary col-sm-12">
+        <tr>
+          <td class="sortButtons col-sm-4" (click)="SortCustomers('name')">
+            <span class="glyphicon glyphicon-triangle-bottom" *ngIf="!orderDescending"></span>
+            <span class="glyphicon glyphicon-triangle-top" *ngIf="orderDescending"></span>
+            Nazwa:
+          </td>
+          <td class="sortButtons col-sm-3" (click)="SortCustomers('address')">
+            <span class="glyphicon glyphicon-triangle-bottom" *ngIf="!orderDescending"></span>
+            <span class="glyphicon glyphicon-triangle-top" *ngIf="orderDescending"></span>
+            Adres:
+          </td>
+          <td class="sortButtons col-sm-3" (click)="SortCustomers('city')">
+            <span class="glyphicon glyphicon-triangle-bottom" *ngIf="!orderDescending"></span>
+            <span class="glyphicon glyphicon-triangle-top" *ngIf="orderDescending"></span>  
+            Miasto:
+          </td>
+          <td class="col-sm-2">NIP:</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr 
+          *ngFor="let customer of customers | customerSearch: searchParam;"
+          (click)="NavigateToDetails(customer['nip'])"
+          style="cursor:pointer;"
+          >
+          <td class="col-sm-4">{{customer.name}}</td>
+          <td class="col-sm-3">{{customer.address}}</td>
+          <td class="col-sm-3">{{customer.city}}</td>
+          <td class="col-sm-2">{{customer.nip}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

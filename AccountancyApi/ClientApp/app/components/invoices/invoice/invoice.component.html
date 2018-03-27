@@ -1,0 +1,45 @@
+<div>
+  <div class="well col-xs-12">
+    <div class="col-xs-12" style="margin-bottom: 30px;">
+      <h2>Faktury:</h2>
+    </div>
+    <div class="col-xs-4">
+      <label for="searchParam">Wyszukaj:</label>
+      <input type="text" name="searchParam" class="form-control" placeholder="Wyszukaj faktury po numerze" [(ngModel)]="serchParam"/>
+    </div>
+    <div class="col-xs-4">
+      <label for="SerachFrom">Od dnia:</label>
+      <input type="date" name="SearchFrom" class="form-control" #SearchFrom (input)="OnSearchFromChange()"/>
+    </div>
+    <div class="col-xs-4">
+      <label for="SerachTo">Do dnia: </label>
+      <input type="date" name="SearchTo" class="form-control" #SearchTo (input)="OnSearchToChange()"/>
+    </div>
+    <div class="col-xs-12" style="margin-top: 10px;">
+      <button class="btn btn-primary" [routerLink]="['/invoice/add']">Dodaj nową fakturę</button>
+      <button class="btn btn-primary pull-right" (click)="SearchByDate()" [disabled]="searchDisabled">Wyszukaj według daty</button>
+      <button class="btn btn-warning pull-right" (click)="ResetSerach()" style="margin-right: 10px;">Resetuj</button>
+    </div>
+  </div>
+  <div>
+    <table class="table table-striped">
+      <thead class="bg-primary col-sm-12">
+        <tr>
+          <td class="col-sm-6">Odbiorca:</td>
+          <td class="col-sm-2">Numer faktury:</td>
+          <td class="col-sm-2">Kwota:</td>
+          <td class="col-sm-2">Data wystawienia:</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="cursor: pointer;" *ngFor="let invoice of invoices | InvoiceNumberSearch:serchParam; let i=index;" 
+        [routerLink]="['/invoice/details']" [queryParams]="{number: invoice['invoiceNumber']}">
+          <td class="col-sm-6">{{invoice.customer.name}}</td>
+          <td class="col-sm-2">{{invoice.invoiceNumber}}/{{invoice.invoiceDate | date:'yyyy'}}</td>
+          <td class="col-sm-2">{{invoice.itemsPriceTotal | currencyPipe}} zł</td>
+          <td class="col-sm-2">{{invoice.invoiceDate | date:'dd.MM.yyyy'}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

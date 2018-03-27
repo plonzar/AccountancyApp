@@ -1,0 +1,16 @@
+.login-box{
+  display: inline-block;
+  margin-top: 20%;
+  float: none;
+}
+
+.background{
+  background: #42a5f5;
+  height: 100vh;
+}
+
+.title{
+  background: white;
+  text-align: center;
+  border-radius: 5px 5px 0px 0px;
+}

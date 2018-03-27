@@ -1,0 +1,17 @@
+.sortButtons:hover{
+  background: #4285F4;
+  cursor: pointer;
+}
+
+.table-striped tbody {
+  height: 400px;
+  overflow-y: auto;
+  width: 100%;
+}
+.table-striped thead, .table-striped tbody, .table-striped tr, .table-striped td, .table-striped th {
+  display: block;
+}
+.table-striped tbody td, .table-striped thead > tr> td {
+  float: left;
+  border-bottom-width: 0;
+}
