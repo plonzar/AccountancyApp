@@ -1,2 +1,2 @@
 # AccountancyApplication
-Application designet do manage invoices and customers. Created using ASP.NET Core and Angular 2
+My Application designed do manage invoices and customers. I created using ASP.NET Core and Angular 2.
