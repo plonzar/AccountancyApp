@@ -58,13 +58,13 @@ export class UserServices{
   LogOut(){
     this.userHttp.LogOut().subscribe(
       () => {
-        this.ClearData();
+        this.userData = null;
+        this.loginData = null;
+        this.signedIn = false;
+        this.userInactive = false;
+        this.commonData.token['token'] = '';
+        this.signinStatusChanged.next(this.signedIn);
         this.router.navigate(['/user/login']);
-      },
-      (error) => {       
-        this.ClearData();
-        this.router.navigate(['/user/login']);
-        
       }
     );
   }
@@ -157,14 +157,5 @@ export class UserServices{
     clearTimeout(this.activeTimer);
     this.userInactive = false;
     this.StartActiveTimer();
-  }
-
-  private ClearData(){
-    this.userData = null;
-    this.loginData = null;
-    this.signedIn = false;
-    this.userInactive = false;
-    this.commonData.token['token'] = '';
-    this.signinStatusChanged.next(this.signedIn);
   }
 }

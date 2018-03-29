@@ -6,6 +6,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var email_http_service_1 = require("./services/email service/email-http.service");
+var email_service_1 = require("./services/email service/email.service");
 //#region import
 var platform_browser_1 = require("@angular/platform-browser");
 var core_1 = require("@angular/core");
@@ -51,6 +53,8 @@ var AppModule = /** @class */ (function () {
                 user_services_1.UserServices,
                 user_http_services_1.UserHttpServices,
                 can_activate_guard_service_1.CanActivateGuard,
+                email_service_1.EmailService,
+                email_http_service_1.EmailHttpService
             ],
             bootstrap: [app_component_1.AppComponent]
         })

@@ -11,9 +11,10 @@ using System;
 namespace AccountancyApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180328164712_EmailServices")]
+    partial class EmailServices
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -59,13 +60,9 @@ namespace AccountancyApi.Migrations
 
                     b.Property<bool>("SslEnabled");
 
-                    b.Property<string>("UserId");
-
                     b.Property<string>("Username");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("EmailsConfigurations");
                 });
@@ -296,13 +293,6 @@ namespace AccountancyApi.Migrations
                 });
 
             modelBuilder.Entity("AccountancyApi.Entities.CustomerEntity", b =>
-                {
-                    b.HasOne("AccountancyApi.Entities.UserEntity", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-                });
-
-            modelBuilder.Entity("AccountancyApi.Entities.EmailConfiguration", b =>
                 {
                     b.HasOne("AccountancyApi.Entities.UserEntity", "User")
                         .WithMany()

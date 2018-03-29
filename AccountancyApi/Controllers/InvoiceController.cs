@@ -121,7 +121,7 @@ namespace AccountancyApi.Controllers
         [HttpPut]
         public async Task<IActionResult> Update([FromBody] InvoiceViewModel invoice)
         {
-            
+            //hard coded id for test
             var user = await manager.FindByNameAsync(User.Identity.Name);
             var userId = user.Id;
 
@@ -159,7 +159,7 @@ namespace AccountancyApi.Controllers
         [HttpDelete]
         public async Task<IActionResult> Delete(int id)
         {
-            
+            //hard coded id for test
             var user = await manager.FindByNameAsync(User.Identity.Name);
             var userId = user.Id;
 

@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using System.IO;
 using System.Text;
@@ -69,6 +70,7 @@ namespace AccountancyApi
             services.AddScoped<IInvoiceModel, InvoiceModel>();
             services.AddScoped<IInvoiceItemModel, InvoiceItemModel>();
             services.AddScoped<IUserModel, UserModel>();
+            services.AddScoped<IEmailModel, EmailModel>();
 
             services.AddMvc();
         }
@@ -76,17 +78,6 @@ namespace AccountancyApi
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            app.Use(async (context, next) => {
-                await next();
-                if (context.Response.StatusCode == 404 &&
-                   !Path.HasExtension(context.Request.Path.Value) &&
-                   !context.Request.Path.Value.StartsWith("/api/"))
-                {
-                    context.Request.Path = "/index.html";
-                    await next();
-                }
-            });
-
             if (env.IsDevelopment())
             {
                 app.UseBrowserLink();

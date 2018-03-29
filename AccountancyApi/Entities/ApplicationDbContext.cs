@@ -11,5 +11,6 @@ namespace AccountancyApi.Entities
         public DbSet<CustomerEntity> CustomerEntities { get; set; }
         public DbSet<InvoiceEntity> InvoiceEntities { get; set; }
         public DbSet<InvoiceItemEntity> InvoiceItemEntities { get; set; }
+        public DbSet<EmailConfiguration> EmailsConfigurations { get; set; }
     }
 }

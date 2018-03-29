@@ -6,9 +6,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Net;
-using System.Net.Mail;
 using System.Threading.Tasks;
 
 namespace AccountancyApi.Controllers
@@ -20,15 +17,15 @@ namespace AccountancyApi.Controllers
         private UserManager<UserEntity> userManager;
         private IMapper mapper;
         private IUserModel userModel;
+        private readonly IEmailModel emailModel;
 
-        public object NetworkCredentials { get; private set; }
-
-        public AccountController(SignInManager<UserEntity> signInManager, UserManager<UserEntity> userManager, IMapper mapper, IUserModel userModel)
+        public AccountController(SignInManager<UserEntity> signInManager, UserManager<UserEntity> userManager, IMapper mapper, IUserModel userModel, IEmailModel emailModel)
         {
             this.signInManager = signInManager;
             this.userManager = userManager;
             this.mapper = mapper;
             this.userModel = userModel;
+            this.emailModel = emailModel;
         }
 
         [HttpPost]
@@ -56,9 +53,16 @@ namespace AccountancyApi.Controllers
                 var result = await userModel.Register(model);
                 if (result)
                 {
-                    return Created("", null);
+                    var user = await userManager.FindByNameAsync(model.Name);
+                    if (user != null)
+                    {
+                        if (emailModel.AddNewUserEmailConfig(user))
+                        {
+                            return Created("", null);
+                        }
+                        return BadRequest("Internal error");
+                    }
                 }
-                return BadRequest();
             }
             return BadRequest("Invalid data");
         }
@@ -110,7 +114,6 @@ namespace AccountancyApi.Controllers
                 {
                     return Ok();
                 }
-                return BadRequest();
             }
             return BadRequest();
         }
@@ -149,6 +152,5 @@ namespace AccountancyApi.Controllers
 
             return Ok(result);
         }
-
     }
 }

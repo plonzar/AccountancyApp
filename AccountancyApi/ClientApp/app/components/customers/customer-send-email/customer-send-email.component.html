@@ -1,0 +1,41 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3>Wysyłanie wiadomości</h3>
+  </div>
+  <form #emailForm="ngForm" (ngSubmit)="SendMessage();">
+  <div class="panel-body">
+    <div class="form-group row">
+      <label for="email"  class="col-sm-2 col-form-label">Odbiorca:</label>
+      <div class="col-sm-10">
+        <input class="form-control" id="email" [(ngModel)]="message.receiver" name="email" type="email" #email="ngModel" required/>
+        <small class="text-danger" *ngIf="!email.valid && email.touched">Proszę wprowadzić odbiorcę</small>
+      </div>
+    </div>
+
+    <div class="col-sm-12"><hr></div>
+
+    <div class="form-group row">
+      <label for="subject"  class="col-sm-2 col-form-label">Temat:</label>
+      <div class="col-sm-10">
+        <input class="form-control" id="subject" [(ngModel)]="message.subject" name="subject" type="text" #subject="ngModel" required/>
+        <small class="text-danger" *ngIf="!email.valid && email.touched">Proszę podać temat</small>
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <textarea rows="7" class="form-control col-sm-12" id="messageBody" [(ngModel)]="message.messageBody" name="messageBody" #messageBody="ngModel" required></textarea>
+      <small class="text-danger" *ngIf="!messageBody.valid && messageBody.touched">Proszę wprowadzić treść</small>
+    </div>
+  </div>
+  <div class="panel-footer">
+    <button type="submit" class="btn btn-primary" [disabled]="!emailForm.valid">Wyślij</button>
+  </div>
+  </form>
+</div>
+
+
+
+
+
+
+  
+  

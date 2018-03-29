@@ -32,7 +32,7 @@ namespace AccountancyApi.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            
+            //hard coded id for test, change later
             var user = await manager.FindByNameAsync(User.Identity.Name);
             var userId = user.Id;
 
@@ -59,7 +59,7 @@ namespace AccountancyApi.Controllers
         public async Task<IActionResult> GetByNip(string nip)
         {
 
-            
+            //hard coded id for test, change later
             var user = await manager.FindByNameAsync(User.Identity.Name);
             var userId = user.Id;
 
@@ -86,7 +86,7 @@ namespace AccountancyApi.Controllers
         [HttpPost]
         public async Task<IActionResult> Add([FromBody]CustomerViewModel customer)
         {
-            
+            //hard coded id for test, change later
             var user = await manager.FindByNameAsync(User.Identity.Name);
             var userId = user.Id;
 
@@ -120,7 +120,7 @@ namespace AccountancyApi.Controllers
         [HttpPut]
         public async Task<IActionResult> Update([FromBody]CustomerViewModel customer)
         {
-            
+            //hard coded id for test, change later
             var user = await manager.FindByNameAsync(User.Identity.Name);
             var userId = user.Id;
 
@@ -151,7 +151,7 @@ namespace AccountancyApi.Controllers
         [HttpPost]
         public async Task<IActionResult> Exist([FromBody]CustomerViewModel customer)
         {
-            
+            //hard coded id for test, change later
             var user = await manager.FindByNameAsync(User.Identity.Name);
             var userId = user.Id;
 

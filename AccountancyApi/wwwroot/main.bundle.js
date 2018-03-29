@@ -117,29 +117,33 @@ var AppComponent = /** @class */ (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__("./node_modules/@angular/platform-browser/esm5/platform-browser.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_component__ = __webpack_require__("./ClientApp/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_nav_nav_component__ = __webpack_require__("./ClientApp/app/components/nav/nav.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__routing_routing_module__ = __webpack_require__("./ClientApp/app/routing/routing.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_customers_customers_module__ = __webpack_require__("./ClientApp/app/components/customers/customers.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_invoices_invoices_module__ = __webpack_require__("./ClientApp/app/components/invoices/invoices.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_users_users_module__ = __webpack_require__("./ClientApp/app/components/users/users.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_customer_services_customer_services__ = __webpack_require__("./ClientApp/app/services/customer services/customer.services.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_customer_services_customer_http_services__ = __webpack_require__("./ClientApp/app/services/customer services/customer.http.services.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_invoice_services_invoice_services__ = __webpack_require__("./ClientApp/app/services/invoice services/invoice.services.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__services_invoice_services_invoice_http_services__ = __webpack_require__("./ClientApp/app/services/invoice services/invoice.http.services.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__services_user_services_user_services__ = __webpack_require__("./ClientApp/app/services/user services/user.services.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__services_user_services_user_http_services__ = __webpack_require__("./ClientApp/app/services/user services/user.http.services.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__services_common_service__ = __webpack_require__("./ClientApp/app/services/common.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__services_local_authorization_can_activate_guard_service__ = __webpack_require__("./ClientApp/app/services/local authorization/can-activate-guard.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_email_service_email_http_service__ = __webpack_require__("./ClientApp/app/services/email service/email-http.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_email_service_email_service__ = __webpack_require__("./ClientApp/app/services/email service/email.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ = __webpack_require__("./node_modules/@angular/platform-browser/esm5/platform-browser.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__("./ClientApp/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_nav_nav_component__ = __webpack_require__("./ClientApp/app/components/nav/nav.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__routing_routing_module__ = __webpack_require__("./ClientApp/app/routing/routing.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_customers_customers_module__ = __webpack_require__("./ClientApp/app/components/customers/customers.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_invoices_invoices_module__ = __webpack_require__("./ClientApp/app/components/invoices/invoices.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_users_users_module__ = __webpack_require__("./ClientApp/app/components/users/users.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_customer_services_customer_services__ = __webpack_require__("./ClientApp/app/services/customer services/customer.services.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__services_customer_services_customer_http_services__ = __webpack_require__("./ClientApp/app/services/customer services/customer.http.services.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__services_invoice_services_invoice_services__ = __webpack_require__("./ClientApp/app/services/invoice services/invoice.services.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__services_invoice_services_invoice_http_services__ = __webpack_require__("./ClientApp/app/services/invoice services/invoice.http.services.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__services_user_services_user_services__ = __webpack_require__("./ClientApp/app/services/user services/user.services.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__services_user_services_user_http_services__ = __webpack_require__("./ClientApp/app/services/user services/user.http.services.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__services_common_service__ = __webpack_require__("./ClientApp/app/services/common.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__services_local_authorization_can_activate_guard_service__ = __webpack_require__("./ClientApp/app/services/local authorization/can-activate-guard.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 //#region import
 
 
@@ -163,30 +167,32 @@ var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["I" /* NgModule */])({
+        Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__app_component__["a" /* AppComponent */],
-                __WEBPACK_IMPORTED_MODULE_3__components_nav_nav_component__["a" /* NavComponent */],
+                __WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */],
+                __WEBPACK_IMPORTED_MODULE_5__components_nav_nav_component__["a" /* NavComponent */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
-                __WEBPACK_IMPORTED_MODULE_6__components_customers_customers_module__["CustomersModule"],
-                __WEBPACK_IMPORTED_MODULE_7__components_invoices_invoices_module__["InvoicesModule"],
-                __WEBPACK_IMPORTED_MODULE_8__components_users_users_module__["UsersModule"],
-                __WEBPACK_IMPORTED_MODULE_5__routing_routing_module__["a" /* RoutingModule */],
-                __WEBPACK_IMPORTED_MODULE_4__angular_common_http__["b" /* HttpClientModule */],
+                __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["a" /* BrowserModule */],
+                __WEBPACK_IMPORTED_MODULE_8__components_customers_customers_module__["CustomersModule"],
+                __WEBPACK_IMPORTED_MODULE_9__components_invoices_invoices_module__["InvoicesModule"],
+                __WEBPACK_IMPORTED_MODULE_10__components_users_users_module__["UsersModule"],
+                __WEBPACK_IMPORTED_MODULE_7__routing_routing_module__["a" /* RoutingModule */],
+                __WEBPACK_IMPORTED_MODULE_6__angular_common_http__["b" /* HttpClientModule */],
             ],
             providers: [
-                __WEBPACK_IMPORTED_MODULE_15__services_common_service__["a" /* CommonService */],
-                __WEBPACK_IMPORTED_MODULE_9__services_customer_services_customer_services__["a" /* CustomerServices */],
-                __WEBPACK_IMPORTED_MODULE_10__services_customer_services_customer_http_services__["a" /* CustomerHttpServices */],
-                __WEBPACK_IMPORTED_MODULE_11__services_invoice_services_invoice_services__["a" /* InvoiceServices */],
-                __WEBPACK_IMPORTED_MODULE_12__services_invoice_services_invoice_http_services__["a" /* InvoiceHttpServices */],
-                __WEBPACK_IMPORTED_MODULE_13__services_user_services_user_services__["a" /* UserServices */],
-                __WEBPACK_IMPORTED_MODULE_14__services_user_services_user_http_services__["a" /* UserHttpServices */],
-                __WEBPACK_IMPORTED_MODULE_16__services_local_authorization_can_activate_guard_service__["a" /* CanActivateGuard */],
+                __WEBPACK_IMPORTED_MODULE_17__services_common_service__["a" /* CommonService */],
+                __WEBPACK_IMPORTED_MODULE_11__services_customer_services_customer_services__["a" /* CustomerServices */],
+                __WEBPACK_IMPORTED_MODULE_12__services_customer_services_customer_http_services__["a" /* CustomerHttpServices */],
+                __WEBPACK_IMPORTED_MODULE_13__services_invoice_services_invoice_services__["a" /* InvoiceServices */],
+                __WEBPACK_IMPORTED_MODULE_14__services_invoice_services_invoice_http_services__["a" /* InvoiceHttpServices */],
+                __WEBPACK_IMPORTED_MODULE_15__services_user_services_user_services__["a" /* UserServices */],
+                __WEBPACK_IMPORTED_MODULE_16__services_user_services_user_http_services__["a" /* UserHttpServices */],
+                __WEBPACK_IMPORTED_MODULE_18__services_local_authorization_can_activate_guard_service__["a" /* CanActivateGuard */],
+                __WEBPACK_IMPORTED_MODULE_1__services_email_service_email_service__["a" /* EmailService */],
+                __WEBPACK_IMPORTED_MODULE_0__services_email_service_email_http_service__["a" /* EmailHttpService */]
             ],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_2__app_component__["a" /* AppComponent */]]
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */]]
         })
     ], AppModule);
     return AppModule;
@@ -284,7 +290,7 @@ module.exports = ""
 /***/ "./ClientApp/app/components/customers/customer-details/customer-details.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"col-sm-6\">\n  <div class=\"panel panel-default\">\n  <div class=\"panel-heading\"><h3>Dane klienta: </h3></div>\n  <div class=\"panel-body\" style=\"font-size: 18px\">\n    <p><b>Nazwa:</b> {{customer.name}}</p>\n    <p><b>Miejscowość:</b> {{customer.city}}</p>\n    <p><b>Kod pocztowy:</b> {{customer.postCode}}</p>\n    <p><b>Email:</b> {{customer.email}}</p>\n    <p><b>Ulica:</b> {{customer.address}}</p>\n    <p><b>NIP:</b> {{customer.nip}}</p>\n  </div>\n  <div class=\"panel-footer\" style=\"min-height: 112px;\">\n    <a class=\"btn btn-default\" [routerLink]=\"['/customer']\">Wróć do listy</a>\n    <a class=\"btn btn-primary\" [routerLink]=\"['edit']\" [queryParams]=\"{ nip: nip}\">Edytuj</a>\n    <a class=\"btn btn-primary\" [routerLink]=\"['invoices']\" [queryParams]=\"{ nip: nip}\">Zobacz faktury</a>\n  </div>\n</div>\n</div>\n<div class=\"col-sm-6\">\n  <router-outlet></router-outlet>\n</div>"
+module.exports = "<div class=\"col-sm-6\">\n  <div class=\"panel panel-default\">\n  <div class=\"panel-heading\"><h3>Dane klienta: </h3></div>\n  <div class=\"panel-body\" style=\"font-size: 18px\">\n    <p><b>Nazwa:</b> {{customer.name}}</p>\n    <p><b>Miejscowość:</b> {{customer.city}}</p>\n    <p><b>Kod pocztowy:</b> {{customer.postCode}}</p>\n    <p><b>Email:</b> {{customer.email}}</p>\n    <p><b>Ulica:</b> {{customer.address}}</p>\n    <p><b>NIP:</b> {{customer.nip}}</p>\n  </div>\n  <div class=\"panel-footer\" style=\"min-height: 112px;\">\n    <a class=\"btn btn-default\" [routerLink]=\"['/customer']\">Wróć do listy</a>\n    <a class=\"btn btn-primary\" [routerLink]=\"['edit']\" [queryParams]=\"{ nip: nip}\">Edytuj</a>\n    <a class=\"btn btn-primary\" [routerLink]=\"['invoices']\" [queryParams]=\"{ nip: nip}\">Zobacz faktury</a>\n    <a class=\"btn btn-primary\" [routerLink]=\"['email']\" [queryParams]=\"{ nip: nip}\">Wyślij wiadomość</a>\n  </div>\n</div>\n</div>\n<div class=\"col-sm-6\">\n  <router-outlet></router-outlet>\n</div>"
 
 /***/ }),
 
@@ -512,6 +518,84 @@ var CustomerInvoicesComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./ClientApp/app/components/customers/customer-send-email/customer-send-email.component.css":
+/***/ (function(module, exports) {
+
+module.exports = "textarea {\r\n  resize: none;\r\n}"
+
+/***/ }),
+
+/***/ "./ClientApp/app/components/customers/customer-send-email/customer-send-email.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-heading\">\n    <h3>Wysyłanie wiadomości</h3>\n  </div>\n  <form #emailForm=\"ngForm\" (ngSubmit)=\"SendMessage();\">\n  <div class=\"panel-body\">\n    <div class=\"form-group row\">\n      <label for=\"email\"  class=\"col-sm-2 col-form-label\">Odbiorca:</label>\n      <div class=\"col-sm-10\">\n        <input class=\"form-control\" id=\"email\" [(ngModel)]=\"message.receiver\" name=\"email\" type=\"email\" #email=\"ngModel\" required/>\n        <small class=\"text-danger\" *ngIf=\"!email.valid && email.touched\">Proszę wprowadzić odbiorcę</small>\n      </div>\n    </div>\n\n    <div class=\"col-sm-12\"><hr></div>\n\n    <div class=\"form-group row\">\n      <label for=\"subject\"  class=\"col-sm-2 col-form-label\">Temat:</label>\n      <div class=\"col-sm-10\">\n        <input class=\"form-control\" id=\"subject\" [(ngModel)]=\"message.subject\" name=\"subject\" type=\"text\" #subject=\"ngModel\" required/>\n        <small class=\"text-danger\" *ngIf=\"!email.valid && email.touched\">Proszę podać temat</small>\n      </div>\n    </div>\n    <div class=\"col-sm-12\">\n      <textarea rows=\"7\" class=\"form-control col-sm-12\" id=\"messageBody\" [(ngModel)]=\"message.messageBody\" name=\"messageBody\" #messageBody=\"ngModel\" required></textarea>\n      <small class=\"text-danger\" *ngIf=\"!messageBody.valid && messageBody.touched\">Proszę wprowadzić treść</small>\n    </div>\n  </div>\n  <div class=\"panel-footer\">\n    <button type=\"submit\" class=\"btn btn-primary\">Wyślij</button>\n  </div>\n  </form>\n</div>\n\n\n\n\n\n\n  \n  "
+
+/***/ }),
+
+/***/ "./ClientApp/app/components/customers/customer-send-email/customer-send-email.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustomerSendEmailComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_email_message_model__ = __webpack_require__("./ClientApp/app/models/email-message.model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_email_service_email_service__ = __webpack_require__("./ClientApp/app/services/email service/email.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_customer_services_customer_services__ = __webpack_require__("./ClientApp/app/services/customer services/customer.services.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_customer_model__ = __webpack_require__("./ClientApp/app/models/customer.model.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var CustomerSendEmailComponent = /** @class */ (function () {
+    function CustomerSendEmailComponent(activRoute, customerService, emailService) {
+        this.activRoute = activRoute;
+        this.customerService = customerService;
+        this.emailService = emailService;
+        this.customer = new __WEBPACK_IMPORTED_MODULE_5__models_customer_model__["a" /* Customer */]();
+        this.message = new __WEBPACK_IMPORTED_MODULE_0__models_email_message_model__["a" /* EmailMessageModel */]();
+    }
+    CustomerSendEmailComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.activRoute.queryParams.subscribe(function (param) {
+            var nip = param['nip'];
+            if (nip != null && nip != undefined)
+                _this.customer = _this.customerService.GetCustomerByNip(nip);
+            if (_this.customer != null) {
+                _this.message.receiver = _this.customer.email;
+            }
+        });
+    };
+    CustomerSendEmailComponent.prototype.SendMessage = function () {
+        console.log(this.message.messageBody);
+        this.emailService.SendMessage(this.message);
+    };
+    CustomerSendEmailComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["n" /* Component */])({
+            selector: 'app-customer-send-email',
+            template: __webpack_require__("./ClientApp/app/components/customers/customer-send-email/customer-send-email.component.html"),
+            styles: [__webpack_require__("./ClientApp/app/components/customers/customer-send-email/customer-send-email.component.css")]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_4__services_customer_services_customer_services__["a" /* CustomerServices */], __WEBPACK_IMPORTED_MODULE_3__services_email_service_email_service__["a" /* EmailService */]])
+    ], CustomerSendEmailComponent);
+    return CustomerSendEmailComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./ClientApp/app/components/customers/customer/customer.component.css":
 /***/ (function(module, exports) {
 
@@ -612,14 +696,15 @@ var CustomerComponent = /** @class */ (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustomersRoutingModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__customer_customer_component__ = __webpack_require__("./ClientApp/app/components/customers/customer/customer.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__add_customer_add_customer_component__ = __webpack_require__("./ClientApp/app/components/customers/add-customer/add-customer.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__customer_details_customer_details_component__ = __webpack_require__("./ClientApp/app/components/customers/customer-details/customer-details.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__customer_edit_customer_edit_component__ = __webpack_require__("./ClientApp/app/components/customers/customer-edit/customer-edit.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__customer_invoices_customer_invoices_component__ = __webpack_require__("./ClientApp/app/components/customers/customer-invoices/customer-invoices.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_local_authorization_can_activate_guard_service__ = __webpack_require__("./ClientApp/app/services/local authorization/can-activate-guard.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__customer_send_email_customer_send_email_component__ = __webpack_require__("./ClientApp/app/components/customers/customer-send-email/customer-send-email.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__customer_customer_component__ = __webpack_require__("./ClientApp/app/components/customers/customer/customer.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__add_customer_add_customer_component__ = __webpack_require__("./ClientApp/app/components/customers/add-customer/add-customer.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__customer_details_customer_details_component__ = __webpack_require__("./ClientApp/app/components/customers/customer-details/customer-details.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__customer_edit_customer_edit_component__ = __webpack_require__("./ClientApp/app/components/customers/customer-edit/customer-edit.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__customer_invoices_customer_invoices_component__ = __webpack_require__("./ClientApp/app/components/customers/customer-invoices/customer-invoices.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_local_authorization_can_activate_guard_service__ = __webpack_require__("./ClientApp/app/services/local authorization/can-activate-guard.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -634,24 +719,26 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var customersRouting = [
-    { path: 'customer', component: __WEBPACK_IMPORTED_MODULE_2__customer_customer_component__["a" /* CustomerComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_7__services_local_authorization_can_activate_guard_service__["a" /* CanActivateGuard */]] },
-    { path: 'customer/add', component: __WEBPACK_IMPORTED_MODULE_3__add_customer_add_customer_component__["a" /* AddCustomerComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_7__services_local_authorization_can_activate_guard_service__["a" /* CanActivateGuard */]] },
-    { path: 'customer/details/:nip', component: __WEBPACK_IMPORTED_MODULE_4__customer_details_customer_details_component__["a" /* CustomerDetailsComponent */], children: [
-            { path: 'edit', component: __WEBPACK_IMPORTED_MODULE_5__customer_edit_customer_edit_component__["a" /* CustomerEditComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_7__services_local_authorization_can_activate_guard_service__["a" /* CanActivateGuard */]] },
-            { path: 'invoices', component: __WEBPACK_IMPORTED_MODULE_6__customer_invoices_customer_invoices_component__["a" /* CustomerInvoicesComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_7__services_local_authorization_can_activate_guard_service__["a" /* CanActivateGuard */]] },
-        ], canActivate: [__WEBPACK_IMPORTED_MODULE_7__services_local_authorization_can_activate_guard_service__["a" /* CanActivateGuard */]] },
+    { path: 'customer', component: __WEBPACK_IMPORTED_MODULE_3__customer_customer_component__["a" /* CustomerComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_8__services_local_authorization_can_activate_guard_service__["a" /* CanActivateGuard */]] },
+    { path: 'customer/add', component: __WEBPACK_IMPORTED_MODULE_4__add_customer_add_customer_component__["a" /* AddCustomerComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_8__services_local_authorization_can_activate_guard_service__["a" /* CanActivateGuard */]] },
+    { path: 'customer/details/:nip', component: __WEBPACK_IMPORTED_MODULE_5__customer_details_customer_details_component__["a" /* CustomerDetailsComponent */], children: [
+            { path: 'edit', component: __WEBPACK_IMPORTED_MODULE_6__customer_edit_customer_edit_component__["a" /* CustomerEditComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_8__services_local_authorization_can_activate_guard_service__["a" /* CanActivateGuard */]] },
+            { path: 'invoices', component: __WEBPACK_IMPORTED_MODULE_7__customer_invoices_customer_invoices_component__["a" /* CustomerInvoicesComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_8__services_local_authorization_can_activate_guard_service__["a" /* CanActivateGuard */]] },
+            { path: 'email', component: __WEBPACK_IMPORTED_MODULE_0__customer_send_email_customer_send_email_component__["a" /* CustomerSendEmailComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_8__services_local_authorization_can_activate_guard_service__["a" /* CanActivateGuard */]] },
+        ], canActivate: [__WEBPACK_IMPORTED_MODULE_8__services_local_authorization_can_activate_guard_service__["a" /* CanActivateGuard */]] },
 ];
 var CustomersRoutingModule = /** @class */ (function () {
     function CustomersRoutingModule() {
     }
     CustomersRoutingModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["I" /* NgModule */])({
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* RouterModule */].forChild(customersRouting)
+                __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* RouterModule */].forChild(customersRouting)
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* RouterModule */]
+                __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* RouterModule */]
             ]
         })
     ], CustomersRoutingModule);
@@ -679,12 +766,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pipes_customer_search_pipe__ = __webpack_require__("./ClientApp/app/components/customers/pipes/customer-search.pipe.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__customer_invoices_customer_invoices_component__ = __webpack_require__("./ClientApp/app/components/customers/customer-invoices/customer-invoices.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pipes_global_pipes_export_module__ = __webpack_require__("./ClientApp/app/pipes/global-pipes-export.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__customer_send_email_customer_send_email_component__ = __webpack_require__("./ClientApp/app/components/customers/customer-send-email/customer-send-email.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -708,6 +797,8 @@ var CustomersModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_6__customer_details_customer_details_component__["a" /* CustomerDetailsComponent */],
                 __WEBPACK_IMPORTED_MODULE_7__customer_edit_customer_edit_component__["a" /* CustomerEditComponent */],
                 __WEBPACK_IMPORTED_MODULE_9__customer_invoices_customer_invoices_component__["a" /* CustomerInvoicesComponent */],
+                __WEBPACK_IMPORTED_MODULE_11__customer_send_email_customer_send_email_component__["a" /* CustomerSendEmailComponent */],
+                __WEBPACK_IMPORTED_MODULE_11__customer_send_email_customer_send_email_component__["a" /* CustomerSendEmailComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_1__angular_common__["b" /* CommonModule */],
@@ -2043,6 +2134,21 @@ var Customer = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./ClientApp/app/models/email-message.model.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EmailMessageModel; });
+var EmailMessageModel = /** @class */ (function () {
+    function EmailMessageModel() {
+    }
+    return EmailMessageModel;
+}());
+
+
+
+/***/ }),
+
 /***/ "./ClientApp/app/models/invoice-item.model.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2454,6 +2560,85 @@ var CustomerServices = /** @class */ (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__customer_http_services__["a" /* CustomerHttpServices */], __WEBPACK_IMPORTED_MODULE_2__user_services_user_services__["a" /* UserServices */]])
     ], CustomerServices);
     return CustomerServices;
+}());
+
+
+
+/***/ }),
+
+/***/ "./ClientApp/app/services/email service/email-http.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EmailHttpService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_service__ = __webpack_require__("./ClientApp/app/services/common.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var EmailHttpService = /** @class */ (function () {
+    function EmailHttpService(commonData, httpService) {
+        this.commonData = commonData;
+        this.httpService = httpService;
+    }
+    EmailHttpService.prototype.SendEmail = function (mesageConfig) {
+        return this.httpService.post("api/email/SendMail", mesageConfig, { headers: new __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpHeaders */]().set('Authorization', "Bearer " + this.commonData.token['token']) });
+    };
+    EmailHttpService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__common_service__["a" /* CommonService */], __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]])
+    ], EmailHttpService);
+    return EmailHttpService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./ClientApp/app/services/email service/email.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EmailService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__email_http_service__ = __webpack_require__("./ClientApp/app/services/email service/email-http.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var EmailService = /** @class */ (function () {
+    function EmailService(emailHttp) {
+        this.emailHttp = emailHttp;
+    }
+    EmailService.prototype.SendMessage = function (message) {
+        this.emailHttp.SendEmail(message).subscribe(function (response) {
+            alert("Wiadomość wysła na pomyślnie");
+        }, function (error) {
+            alert("Nie udało się wysłać");
+        });
+    };
+    EmailService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__email_http_service__["a" /* EmailHttpService */]])
+    ], EmailService);
+    return EmailService;
 }());
 
 

@@ -6,6 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var customer_send_email_component_1 = require("./customer-send-email/customer-send-email.component");
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var customer_component_1 = require("./customer/customer.component");
@@ -20,6 +21,7 @@ var customersRouting = [
     { path: 'customer/details/:nip', component: customer_details_component_1.CustomerDetailsComponent, children: [
             { path: 'edit', component: customer_edit_component_1.CustomerEditComponent, canActivate: [can_activate_guard_service_1.CanActivateGuard] },
             { path: 'invoices', component: customer_invoices_component_1.CustomerInvoicesComponent, canActivate: [can_activate_guard_service_1.CanActivateGuard] },
+            { path: 'email', component: customer_send_email_component_1.CustomerSendEmailComponent, canActivate: [can_activate_guard_service_1.CanActivateGuard] },
         ], canActivate: [can_activate_guard_service_1.CanActivateGuard] },
 ];
 var CustomersRoutingModule = /** @class */ (function () {

@@ -12,6 +12,7 @@ import { CustomerEditComponent } from "./customer-edit/customer-edit.component";
 import { CustomerSearchPipe } from "./pipes/customer-search.pipe";
 import { CustomerInvoicesComponent } from './customer-invoices/customer-invoices.component';
 import { GlobalPipesExportModule } from './../../pipes/global-pipes-export.module';
+import { CustomerSendEmailComponent } from './customer-send-email/customer-send-email.component';
 
 
 
@@ -23,6 +24,9 @@ import { GlobalPipesExportModule } from './../../pipes/global-pipes-export.modul
     CustomerDetailsComponent,
     CustomerEditComponent,
     CustomerInvoicesComponent,
+    CustomerSendEmailComponent
+,
+    CustomerSendEmailComponent
 ],
   imports: [
     CommonModule,

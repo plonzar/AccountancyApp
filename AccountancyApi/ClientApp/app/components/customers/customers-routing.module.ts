@@ -1,3 +1,4 @@
+import { CustomerSendEmailComponent } from './customer-send-email/customer-send-email.component';
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 
@@ -14,6 +15,7 @@ const customersRouting: Routes = [
     {path: 'customer/details/:nip', component: CustomerDetailsComponent,children:[
       {path: 'edit', component: CustomerEditComponent, canActivate: [CanActivateGuard]},
       {path: 'invoices', component: CustomerInvoicesComponent, canActivate: [CanActivateGuard]},
+      {path: 'email', component: CustomerSendEmailComponent, canActivate: [CanActivateGuard]},
     ], canActivate: [CanActivateGuard]},
 ]
 

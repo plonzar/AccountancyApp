@@ -1,3 +1,5 @@
+import { EmailHttpService } from './services/email service/email-http.service';
+import { EmailService } from './services/email service/email.service';
 //#region import
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -42,6 +44,8 @@ import { CanActivateGuard } from './services/local authorization/can-activate-gu
     UserServices, 
     UserHttpServices,
     CanActivateGuard,
+    EmailService,
+    EmailHttpService
   ],
   bootstrap: [AppComponent]
 })
