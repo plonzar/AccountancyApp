@@ -35,7 +35,6 @@ var CustomerSendEmailComponent = /** @class */ (function () {
         });
     };
     CustomerSendEmailComponent.prototype.SendMessage = function () {
-        console.log(this.message.messageBody);
         this.emailService.SendMessage(this.message);
     };
     CustomerSendEmailComponent = __decorate([

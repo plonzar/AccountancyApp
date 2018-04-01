@@ -32,8 +32,6 @@ export class CustomerSendEmailComponent implements OnInit {
   }
 
   SendMessage(){
-    console.log(this.message.messageBody);
-    
     this.emailService.SendMessage(this.message);
   }
 

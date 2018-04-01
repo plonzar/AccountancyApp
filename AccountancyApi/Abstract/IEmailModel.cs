@@ -18,5 +18,7 @@ namespace AccountancyApi.Abstract
         bool SetupEmailConfig(UserEntity user);
 
         bool AddNewUserEmailConfig(UserEntity user);
+
+        EmailConfiguration SmtpAutoConfiguration(AutoConfigurationViewModel config, UserEntity user);
     }
 }

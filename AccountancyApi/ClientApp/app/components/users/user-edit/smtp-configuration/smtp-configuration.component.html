@@ -1,0 +1,100 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3>Ustawienia serwisu SMTP</h3>
+  </div>
+  <div class="panel-body">
+    <div class="col-sm-12">
+      Uwaga! Zmiana tych ustawień może spowodować, że wysłane wiadomośći nie będą docierać do odbiorcy
+      <span class="col-sm-12">
+        <span style="float:left;"><strong>Odblikuj zmianę konfiguracji: </strong></span>
+        <label class="switch" style="float:left; margin-left: 5px;">
+          <input type="checkbox" #unlockForm [(ngModel)]="allowedToConfiguration" (click)="ActiveForm()">
+          <span class="slider"></span>
+        </label>
+      </span>
+      <div class="col-sm-4" style="float:none;"></div>
+    </div>
+    <div class="col-sm-12"><hr></div>
+    <div>
+      <form #smtpForm="ngForm" autocomplete="off" (ngSubmit)="ChangeSmtp()">
+        <div class="form-group col-sm-12">
+          <div class="col-sm-3">
+            <label>Hosta serwera:</label>
+          </div>
+          <div class="col-sm-9">
+            <input class="form-control" type="text" name="host" #host="ngModel" [(ngModel)]="smtpConfig.host" required>
+          </div>
+        </div>
+        <div class="form-group col-sm-12">
+          <div class="col-sm-3">
+            <label>Port:</label>
+          </div>
+          <div class="col-sm-9">
+            <input class="form-control" type="number" name="port" #port="ngModel" [(ngModel)]="smtpConfig.port">
+          </div>
+        </div>
+        <div class="form-group col-sm-12">
+          <div class="col-sm-3">
+            <label>Nazwa użytkownika:</label>
+          </div>
+          <div class="col-sm-9">
+            <input class="form-control" type="text" name="username" #username="ngModel" [(ngModel)]="smtpConfig.username" placeholder="najczęść to Twój email" required>
+          </div>
+        </div>
+        <div class="form-group col-sm-12">
+          <div class="col-sm-3">
+            <label>Hasło:</label>
+          </div>
+          <div class="col-sm-9">
+            <input class="form-control" type="password" name="password" #password="ngModel" [(ngModel)]="smtpConfig.password" required>
+          </div>
+        </div>
+        <div class="form-group col-sm-12">
+          <div class="col-sm-4">
+            <label>SSL włączone:</label>
+          </div>
+          <div class="col-sm-8">
+            <label class="radio-inline"><input type="radio" #sslEnabled="ngModel" name="sslEnabled" [value]="true" [(ngModel)]="smtpConfig.sslEnabled" required>Tak</label>
+            <label class="radio-inline"><input type="radio" #sslEnabled="ngModel" name="sslEnabled" [value]="false" [(ngModel)]="smtpConfig.sslEnabled" required>Nie</label>
+          </div>
+        </div>
+        <div *ngIf="!changingStart && !changeSucceded" class="col-sm-12">
+          <div class="col-sm-9">
+            <button type="submit" class="btn btn-primary" [disabled]="!smtpForm.valid">Zmień ustawienia</button>
+            <button type="button" class="btn btn-warning" [disabled]="!unlockForm.checked" (click)="ResetSmtpSettings()">Ustaw domyślne</button>
+          </div>
+          <div class="col-sm-3 pull-right">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#helpModal">Pomoc</button>
+          </div>
+        </div>
+        <div *ngIf="changingStart" style="text-align:center;">
+          <p>Proszę czekać</p>
+          <span class="glyphicon glyphicon-cog" style="font-size:24px"></span>
+        </div>
+        <div *ngIf="changeSucceded" style="text-align:center;">
+          <p>Zapisano pomyślnie</p>
+          <span class="glyphicon glyphicon-ok-circle" style="font-size:24px"></span>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--Modal for SMTP help-->
+<div id="helpModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" (click)="configPage = false">&times;</button>
+        <h4 class="modal-title">Pomoc</h4>
+      </div>
+      <div class="modal-body">
+        <app-help-info *ngIf="!configPage"></app-help-info>
+        <app-help-auto-config *ngIf="configPage"></app-help-auto-config>
+        <button type="button" class="btn btn-primary" (click)="changeInfoPage()">{{configPage ? 'Do informacji' : 'Do autokonfiguracji'}}</button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="configPage = false">Zamknij</button>
+      </div>
+    </div>
+  </div>
+</div>

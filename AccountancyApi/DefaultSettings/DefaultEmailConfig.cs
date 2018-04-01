@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace AccountancyApi.DefaultSettings
 {
-    public class DefaultEmailConfig
+    public static class DefaultEmailConfig
     {
-        public string Host = "";
-        public int Port = 0;
-        public string Username = "";
-        public string Password = "";
-        public bool SslEnabled = true;
+        public static string Host = "";
+        public static int Port = 587;
+        public static string Username = "example@eg.com";
+        public static string Password = "yourPassword";
+        public static bool SslEnabled = true;
     }
 }

@@ -47,13 +47,12 @@ namespace AccountancyApi.Controllers
         [HttpPost]
         public async Task<IActionResult> Register([FromBody] RegisterViewModel model)
         {
-
             if (ModelState.IsValid)
             {
                 var result = await userModel.Register(model);
                 if (result)
                 {
-                    var user = await userManager.FindByNameAsync(model.Name);
+                    var user = await userManager.FindByEmailAsync(model.Email);
                     if (user != null)
                     {
                         if (emailModel.AddNewUserEmailConfig(user))

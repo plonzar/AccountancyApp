@@ -8,7 +8,6 @@
       <label for="email"  class="col-sm-2 col-form-label">Odbiorca:</label>
       <div class="col-sm-10">
         <input class="form-control" id="email" [(ngModel)]="message.receiver" name="email" type="email" #email="ngModel" required/>
-        <small class="text-danger" *ngIf="!email.valid && email.touched">Proszę wprowadzić odbiorcę</small>
       </div>
     </div>
 
@@ -18,7 +17,6 @@
       <label for="subject"  class="col-sm-2 col-form-label">Temat:</label>
       <div class="col-sm-10">
         <input class="form-control" id="subject" [(ngModel)]="message.subject" name="subject" type="text" #subject="ngModel" required/>
-        <small class="text-danger" *ngIf="!email.valid && email.touched">Proszę podać temat</small>
       </div>
     </div>
     <div class="col-sm-12">

@@ -1,0 +1,29 @@
+<div style="max-width: 60%; text-align: center; position: relative; margin-left:20%;">
+  <form #autocofigForm="ngForm" (ngSubmit)="Autoconfig();">
+    <div class="form-group">
+      <label for="username">Email:</label>
+      <input type="email" name="username" class="form-control" [(ngModel)]="config.username" #email="ngModel" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"/>
+    </div>
+    <div><br></div>
+    <div class="form-group">
+      <label for="password">Hasło:</label>
+      <input type="password" name="password" class="form-control" [(ngModel)]="config.password" #password="ngModel" required/>
+    </div>
+    <div><br></div>
+    <div class="form-group">
+      <label for="domain">Dostawca poczty email:</label>
+      <select class="form-control" name="domain" [(ngModel)]="config.domain" #domain="ngModel" required>
+        <option *ngFor="let email of emailProviders['providers']" value="{{email}}">{{email}}</option>
+      </select>
+    </div>
+    <div><br></div>
+    <div *ngIf="!changingStart">
+      <button type="submit" class="btn btn-primary">Konfiguruj</button>
+    </div>
+    <div *ngIf="changingStart" style="text-align:center;">
+      <p>Proszę czekać</p>
+      <span class="glyphicon glyphicon-cog" style="font-size:24px"></span>
+    </div>
+  </form>
+</div>
+<div><hr></div>

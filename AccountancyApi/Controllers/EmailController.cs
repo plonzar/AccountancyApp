@@ -61,6 +61,7 @@ namespace AccountancyApi.Controllers
             return BadRequest();
         }
 
+        [HttpPost]
         public async Task<IActionResult>  ChangeEmailConfiguration([FromBody] EmailConfigurationViewModel emailConfig)
         {
             if (ModelState.IsValid)
@@ -71,6 +72,25 @@ namespace AccountancyApi.Controllers
                     if (emailModel.ChangeEmailConfiguration(mapper.Map<EmailConfigurationViewModel, EmailConfiguration>(emailConfig), user))
                     {
                         return Ok();
+                    }
+                }
+            }
+            return BadRequest();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EmailAutoConfig([FromBody] AutoConfigurationViewModel emailConfig)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await userManager.FindByNameAsync(User.Identity.Name);
+                if (user != null)
+                {
+                    var config = emailModel.SmtpAutoConfiguration(emailConfig, user);
+                    if (config != null)
+                    {
+                        config.Password = "";
+                        return Ok(mapper.Map<EmailConfiguration, EmailConfigurationViewModel>(config));
                     }
                 }
             }

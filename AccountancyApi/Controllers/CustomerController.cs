@@ -46,12 +46,12 @@ namespace AccountancyApi.Controllers
                 }
                 catch (Exception)
                 {
-                    return await Task.FromResult(NotFound());
+                    return await Task.FromResult(BadRequest());
                 }
             }
             else
             {
-                return await Task.FromResult(NotFound());
+                return await Task.FromResult(BadRequest());
             }
         }
 

@@ -17,7 +17,7 @@ var customer_edit_component_1 = require("./customer-edit/customer-edit.component
 var customer_search_pipe_1 = require("./pipes/customer-search.pipe");
 var customer_invoices_component_1 = require("./customer-invoices/customer-invoices.component");
 var global_pipes_export_module_1 = require("./../../pipes/global-pipes-export.module");
-var customer_send_email_component_1 = require("./customer-send-email/customer-send-email.component");
+var customer_send_email_component_1 = require("../email/customer-send-email/customer-send-email.component");
 var CustomersModule = /** @class */ (function () {
     function CustomersModule() {
     }
@@ -30,7 +30,6 @@ var CustomersModule = /** @class */ (function () {
                 customer_details_component_1.CustomerDetailsComponent,
                 customer_edit_component_1.CustomerEditComponent,
                 customer_invoices_component_1.CustomerInvoicesComponent,
-                customer_send_email_component_1.CustomerSendEmailComponent,
                 customer_send_email_component_1.CustomerSendEmailComponent
             ],
             imports: [

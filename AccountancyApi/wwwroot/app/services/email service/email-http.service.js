@@ -20,6 +20,15 @@ var EmailHttpService = /** @class */ (function () {
     EmailHttpService.prototype.SendEmail = function (mesageConfig) {
         return this.httpService.post("api/email/SendMail", mesageConfig, { headers: new http_1.HttpHeaders().set('Authorization', "Bearer " + this.commonData.token['token']) });
     };
+    EmailHttpService.prototype.ChangeSmtpSettings = function (settings) {
+        return this.httpService.post("api/email/ChangeEmailConfiguration", settings, { headers: new http_1.HttpHeaders().set('Authorization', "Bearer " + this.commonData.token['token']) });
+    };
+    EmailHttpService.prototype.ResetDefaults = function () {
+        return this.httpService.post("api/email/ResetSmtpSettings", null, { headers: new http_1.HttpHeaders().set('Authorization', "Bearer " + this.commonData.token['token']) });
+    };
+    EmailHttpService.prototype.SmtpAutoConfig = function (config) {
+        return this.httpService.post("api/email/EmailAutoConfig", config, { headers: new http_1.HttpHeaders().set('Authorization', "Bearer " + this.commonData.token['token']) });
+    };
     EmailHttpService = __decorate([
         core_1.Injectable(),
         __metadata("design:paramtypes", [common_service_1.CommonService, http_1.HttpClient])

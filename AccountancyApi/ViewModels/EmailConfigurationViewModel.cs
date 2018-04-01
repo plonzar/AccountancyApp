@@ -11,7 +11,6 @@ namespace AccountancyApi.ViewModels
         [Required]
         public string Host { get; set; }
 
-        [Required]
         public int Port { get; set; }
 
         [Required]

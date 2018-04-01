@@ -12,7 +12,7 @@ import { CustomerEditComponent } from "./customer-edit/customer-edit.component";
 import { CustomerSearchPipe } from "./pipes/customer-search.pipe";
 import { CustomerInvoicesComponent } from './customer-invoices/customer-invoices.component';
 import { GlobalPipesExportModule } from './../../pipes/global-pipes-export.module';
-import { CustomerSendEmailComponent } from './customer-send-email/customer-send-email.component';
+import { CustomerSendEmailComponent } from "../email/customer-send-email/customer-send-email.component";
 
 
 
@@ -24,8 +24,6 @@ import { CustomerSendEmailComponent } from './customer-send-email/customer-send-
     CustomerDetailsComponent,
     CustomerEditComponent,
     CustomerInvoicesComponent,
-    CustomerSendEmailComponent
-,
     CustomerSendEmailComponent
 ],
   imports: [

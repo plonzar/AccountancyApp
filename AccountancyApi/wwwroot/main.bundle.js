@@ -518,84 +518,6 @@ var CustomerInvoicesComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./ClientApp/app/components/customers/customer-send-email/customer-send-email.component.css":
-/***/ (function(module, exports) {
-
-module.exports = "textarea {\r\n  resize: none;\r\n}"
-
-/***/ }),
-
-/***/ "./ClientApp/app/components/customers/customer-send-email/customer-send-email.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-heading\">\n    <h3>Wysyłanie wiadomości</h3>\n  </div>\n  <form #emailForm=\"ngForm\" (ngSubmit)=\"SendMessage();\">\n  <div class=\"panel-body\">\n    <div class=\"form-group row\">\n      <label for=\"email\"  class=\"col-sm-2 col-form-label\">Odbiorca:</label>\n      <div class=\"col-sm-10\">\n        <input class=\"form-control\" id=\"email\" [(ngModel)]=\"message.receiver\" name=\"email\" type=\"email\" #email=\"ngModel\" required/>\n        <small class=\"text-danger\" *ngIf=\"!email.valid && email.touched\">Proszę wprowadzić odbiorcę</small>\n      </div>\n    </div>\n\n    <div class=\"col-sm-12\"><hr></div>\n\n    <div class=\"form-group row\">\n      <label for=\"subject\"  class=\"col-sm-2 col-form-label\">Temat:</label>\n      <div class=\"col-sm-10\">\n        <input class=\"form-control\" id=\"subject\" [(ngModel)]=\"message.subject\" name=\"subject\" type=\"text\" #subject=\"ngModel\" required/>\n        <small class=\"text-danger\" *ngIf=\"!email.valid && email.touched\">Proszę podać temat</small>\n      </div>\n    </div>\n    <div class=\"col-sm-12\">\n      <textarea rows=\"7\" class=\"form-control col-sm-12\" id=\"messageBody\" [(ngModel)]=\"message.messageBody\" name=\"messageBody\" #messageBody=\"ngModel\" required></textarea>\n      <small class=\"text-danger\" *ngIf=\"!messageBody.valid && messageBody.touched\">Proszę wprowadzić treść</small>\n    </div>\n  </div>\n  <div class=\"panel-footer\">\n    <button type=\"submit\" class=\"btn btn-primary\">Wyślij</button>\n  </div>\n  </form>\n</div>\n\n\n\n\n\n\n  \n  "
-
-/***/ }),
-
-/***/ "./ClientApp/app/components/customers/customer-send-email/customer-send-email.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustomerSendEmailComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_email_message_model__ = __webpack_require__("./ClientApp/app/models/email-message.model.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_email_service_email_service__ = __webpack_require__("./ClientApp/app/services/email service/email.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_customer_services_customer_services__ = __webpack_require__("./ClientApp/app/services/customer services/customer.services.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_customer_model__ = __webpack_require__("./ClientApp/app/models/customer.model.ts");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-var CustomerSendEmailComponent = /** @class */ (function () {
-    function CustomerSendEmailComponent(activRoute, customerService, emailService) {
-        this.activRoute = activRoute;
-        this.customerService = customerService;
-        this.emailService = emailService;
-        this.customer = new __WEBPACK_IMPORTED_MODULE_5__models_customer_model__["a" /* Customer */]();
-        this.message = new __WEBPACK_IMPORTED_MODULE_0__models_email_message_model__["a" /* EmailMessageModel */]();
-    }
-    CustomerSendEmailComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.activRoute.queryParams.subscribe(function (param) {
-            var nip = param['nip'];
-            if (nip != null && nip != undefined)
-                _this.customer = _this.customerService.GetCustomerByNip(nip);
-            if (_this.customer != null) {
-                _this.message.receiver = _this.customer.email;
-            }
-        });
-    };
-    CustomerSendEmailComponent.prototype.SendMessage = function () {
-        console.log(this.message.messageBody);
-        this.emailService.SendMessage(this.message);
-    };
-    CustomerSendEmailComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["n" /* Component */])({
-            selector: 'app-customer-send-email',
-            template: __webpack_require__("./ClientApp/app/components/customers/customer-send-email/customer-send-email.component.html"),
-            styles: [__webpack_require__("./ClientApp/app/components/customers/customer-send-email/customer-send-email.component.css")]
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_4__services_customer_services_customer_services__["a" /* CustomerServices */], __WEBPACK_IMPORTED_MODULE_3__services_email_service_email_service__["a" /* EmailService */]])
-    ], CustomerSendEmailComponent);
-    return CustomerSendEmailComponent;
-}());
-
-
-
-/***/ }),
-
 /***/ "./ClientApp/app/components/customers/customer/customer.component.css":
 /***/ (function(module, exports) {
 
@@ -696,15 +618,15 @@ var CustomerComponent = /** @class */ (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustomersRoutingModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__customer_send_email_customer_send_email_component__ = __webpack_require__("./ClientApp/app/components/customers/customer-send-email/customer-send-email.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__customer_customer_component__ = __webpack_require__("./ClientApp/app/components/customers/customer/customer.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__add_customer_add_customer_component__ = __webpack_require__("./ClientApp/app/components/customers/add-customer/add-customer.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__customer_details_customer_details_component__ = __webpack_require__("./ClientApp/app/components/customers/customer-details/customer-details.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__customer_edit_customer_edit_component__ = __webpack_require__("./ClientApp/app/components/customers/customer-edit/customer-edit.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__customer_invoices_customer_invoices_component__ = __webpack_require__("./ClientApp/app/components/customers/customer-invoices/customer-invoices.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_local_authorization_can_activate_guard_service__ = __webpack_require__("./ClientApp/app/services/local authorization/can-activate-guard.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__customer_customer_component__ = __webpack_require__("./ClientApp/app/components/customers/customer/customer.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__add_customer_add_customer_component__ = __webpack_require__("./ClientApp/app/components/customers/add-customer/add-customer.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__customer_details_customer_details_component__ = __webpack_require__("./ClientApp/app/components/customers/customer-details/customer-details.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__customer_edit_customer_edit_component__ = __webpack_require__("./ClientApp/app/components/customers/customer-edit/customer-edit.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__customer_invoices_customer_invoices_component__ = __webpack_require__("./ClientApp/app/components/customers/customer-invoices/customer-invoices.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_local_authorization_can_activate_guard_service__ = __webpack_require__("./ClientApp/app/services/local authorization/can-activate-guard.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__email_customer_send_email_customer_send_email_component__ = __webpack_require__("./ClientApp/app/components/email/customer-send-email/customer-send-email.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -721,24 +643,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 var customersRouting = [
-    { path: 'customer', component: __WEBPACK_IMPORTED_MODULE_3__customer_customer_component__["a" /* CustomerComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_8__services_local_authorization_can_activate_guard_service__["a" /* CanActivateGuard */]] },
-    { path: 'customer/add', component: __WEBPACK_IMPORTED_MODULE_4__add_customer_add_customer_component__["a" /* AddCustomerComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_8__services_local_authorization_can_activate_guard_service__["a" /* CanActivateGuard */]] },
-    { path: 'customer/details/:nip', component: __WEBPACK_IMPORTED_MODULE_5__customer_details_customer_details_component__["a" /* CustomerDetailsComponent */], children: [
-            { path: 'edit', component: __WEBPACK_IMPORTED_MODULE_6__customer_edit_customer_edit_component__["a" /* CustomerEditComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_8__services_local_authorization_can_activate_guard_service__["a" /* CanActivateGuard */]] },
-            { path: 'invoices', component: __WEBPACK_IMPORTED_MODULE_7__customer_invoices_customer_invoices_component__["a" /* CustomerInvoicesComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_8__services_local_authorization_can_activate_guard_service__["a" /* CanActivateGuard */]] },
-            { path: 'email', component: __WEBPACK_IMPORTED_MODULE_0__customer_send_email_customer_send_email_component__["a" /* CustomerSendEmailComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_8__services_local_authorization_can_activate_guard_service__["a" /* CanActivateGuard */]] },
-        ], canActivate: [__WEBPACK_IMPORTED_MODULE_8__services_local_authorization_can_activate_guard_service__["a" /* CanActivateGuard */]] },
+    { path: 'customer', component: __WEBPACK_IMPORTED_MODULE_2__customer_customer_component__["a" /* CustomerComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_7__services_local_authorization_can_activate_guard_service__["a" /* CanActivateGuard */]] },
+    { path: 'customer/add', component: __WEBPACK_IMPORTED_MODULE_3__add_customer_add_customer_component__["a" /* AddCustomerComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_7__services_local_authorization_can_activate_guard_service__["a" /* CanActivateGuard */]] },
+    { path: 'customer/details/:nip', component: __WEBPACK_IMPORTED_MODULE_4__customer_details_customer_details_component__["a" /* CustomerDetailsComponent */], children: [
+            { path: 'edit', component: __WEBPACK_IMPORTED_MODULE_5__customer_edit_customer_edit_component__["a" /* CustomerEditComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_7__services_local_authorization_can_activate_guard_service__["a" /* CanActivateGuard */]] },
+            { path: 'invoices', component: __WEBPACK_IMPORTED_MODULE_6__customer_invoices_customer_invoices_component__["a" /* CustomerInvoicesComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_7__services_local_authorization_can_activate_guard_service__["a" /* CanActivateGuard */]] },
+            { path: 'email', component: __WEBPACK_IMPORTED_MODULE_8__email_customer_send_email_customer_send_email_component__["a" /* CustomerSendEmailComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_7__services_local_authorization_can_activate_guard_service__["a" /* CanActivateGuard */]] },
+        ], canActivate: [__WEBPACK_IMPORTED_MODULE_7__services_local_authorization_can_activate_guard_service__["a" /* CanActivateGuard */]] },
 ];
 var CustomersRoutingModule = /** @class */ (function () {
     function CustomersRoutingModule() {
     }
     CustomersRoutingModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["I" /* NgModule */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             imports: [
-                __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* RouterModule */].forChild(customersRouting)
+                __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* RouterModule */].forChild(customersRouting)
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* RouterModule */]
+                __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* RouterModule */]
             ]
         })
     ], CustomersRoutingModule);
@@ -766,7 +688,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pipes_customer_search_pipe__ = __webpack_require__("./ClientApp/app/components/customers/pipes/customer-search.pipe.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__customer_invoices_customer_invoices_component__ = __webpack_require__("./ClientApp/app/components/customers/customer-invoices/customer-invoices.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pipes_global_pipes_export_module__ = __webpack_require__("./ClientApp/app/pipes/global-pipes-export.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__customer_send_email_customer_send_email_component__ = __webpack_require__("./ClientApp/app/components/customers/customer-send-email/customer-send-email.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__email_customer_send_email_customer_send_email_component__ = __webpack_require__("./ClientApp/app/components/email/customer-send-email/customer-send-email.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -797,8 +719,7 @@ var CustomersModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_6__customer_details_customer_details_component__["a" /* CustomerDetailsComponent */],
                 __WEBPACK_IMPORTED_MODULE_7__customer_edit_customer_edit_component__["a" /* CustomerEditComponent */],
                 __WEBPACK_IMPORTED_MODULE_9__customer_invoices_customer_invoices_component__["a" /* CustomerInvoicesComponent */],
-                __WEBPACK_IMPORTED_MODULE_11__customer_send_email_customer_send_email_component__["a" /* CustomerSendEmailComponent */],
-                __WEBPACK_IMPORTED_MODULE_11__customer_send_email_customer_send_email_component__["a" /* CustomerSendEmailComponent */]
+                __WEBPACK_IMPORTED_MODULE_11__email_customer_send_email_customer_send_email_component__["a" /* CustomerSendEmailComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_1__angular_common__["b" /* CommonModule */],
@@ -843,6 +764,87 @@ var CustomerSearchPipe = /** @class */ (function () {
         })
     ], CustomerSearchPipe);
     return CustomerSearchPipe;
+}());
+
+
+
+/***/ }),
+
+/***/ "./ClientApp/app/components/email/customer-send-email/customer-send-email.component.css":
+/***/ (function(module, exports) {
+
+module.exports = "textarea {\r\n  resize: none;\r\n}\r\n\r\ninput.ng-touched.ng-invalid{\r\n  background-color: #ffb3b3;\r\n  border: 2px solid red;\r\n}"
+
+/***/ }),
+
+/***/ "./ClientApp/app/components/email/customer-send-email/customer-send-email.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-heading\">\n    <h3>Wysyłanie wiadomości</h3>\n  </div>\n  <form #emailForm=\"ngForm\" (ngSubmit)=\"SendMessage();\">\n    <div class=\"panel-body\">\n\n      <div class=\"form-group row col-sm-12\">\n        <label for=\"email\"  class=\"col-sm-2 col-form-label\">Odbiorca:</label>\n        <div class=\"col-sm-10\">\n          <input class=\"form-control\" \n          [(ngModel)]=\"message.receiver\" \n          name=\"email\" \n          type=\"email\" \n          #email=\"ngModel\" \n          required \n          pattern=\"[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$\"/>\n          <small class=\"text-danger\" *ngIf=\"!email.valid && email.touched\">Proszę wprowadzić odbiorcę</small>\n        </div>\n      </div>\n\n      <div class=\"col-sm-12\"><hr></div>\n\n      <div class=\"form-group row col-sm-12\">\n        <label for=\"subject\"  class=\"col-sm-2 col-form-label\">Temat:</label>\n        <div class=\"col-sm-10\">\n          <input class=\"form-control\" id=\"subject\" [(ngModel)]=\"message.subject\" name=\"subject\" type=\"text\" #subject=\"ngModel\" required/>\n          <small class=\"text-danger\" *ngIf=\"!email.valid && email.touched\">Proszę podać temat</small>\n        </div>\n      </div>\n      <div class=\"col-sm-12\">\n        <textarea rows=\"7\" \n        class=\"form-control col-sm-12\" \n        [(ngModel)]=\"message.messageBody\" \n        name=\"messageBody\" \n        #messageBody=\"ngModel\"\n        required \n        placeholder=\"treść\"></textarea>\n        <small class=\"text-danger\" *ngIf=\"!messageBody.valid && messageBody.touched\">Proszę wprowadzić treść</small>\n      </div>\n    </div>\n    <div class=\"panel-footer\">\n      <button type=\"submit\" class=\"btn btn-primary\" [disabled]=\"!emailForm.valid\">Wyślij</button>\n    </div>\n  </form>\n</div>\n\n\n\n\n\n\n  \n  "
+
+/***/ }),
+
+/***/ "./ClientApp/app/components/email/customer-send-email/customer-send-email.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustomerSendEmailComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_customer_model__ = __webpack_require__("./ClientApp/app/models/customer.model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__models_email_message_model__ = __webpack_require__("./ClientApp/app/models/email-message.model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_customer_services_customer_services__ = __webpack_require__("./ClientApp/app/services/customer services/customer.services.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_email_service_email_service__ = __webpack_require__("./ClientApp/app/services/email service/email.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+var CustomerSendEmailComponent = /** @class */ (function () {
+    function CustomerSendEmailComponent(activRoute, location, customerService, emailService) {
+        this.activRoute = activRoute;
+        this.location = location;
+        this.customerService = customerService;
+        this.emailService = emailService;
+        this.customer = new __WEBPACK_IMPORTED_MODULE_3__models_customer_model__["a" /* Customer */]();
+        this.message = new __WEBPACK_IMPORTED_MODULE_4__models_email_message_model__["a" /* EmailMessageModel */]();
+    }
+    CustomerSendEmailComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.activRoute.queryParams.subscribe(function (param) {
+            var nip = param['nip'];
+            if (nip != null && nip != undefined)
+                _this.customer = _this.customerService.GetCustomerByNip(nip);
+            if (_this.customer != null) {
+                _this.message.receiver = _this.customer.email;
+            }
+        });
+    };
+    CustomerSendEmailComponent.prototype.SendMessage = function () {
+        this.emailService.SendMessage(this.message);
+        this.location.back();
+    };
+    CustomerSendEmailComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-customer-send-email',
+            template: __webpack_require__("./ClientApp/app/components/email/customer-send-email/customer-send-email.component.html"),
+            styles: [__webpack_require__("./ClientApp/app/components/email/customer-send-email/customer-send-email.component.css")]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_2__angular_common__["f" /* Location */], __WEBPACK_IMPORTED_MODULE_5__services_customer_services_customer_services__["a" /* CustomerServices */], __WEBPACK_IMPORTED_MODULE_6__services_email_service_email_service__["a" /* EmailService */]])
+    ], CustomerSendEmailComponent);
+    return CustomerSendEmailComponent;
 }());
 
 
@@ -1914,25 +1916,25 @@ var RegisterComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./ClientApp/app/components/users/user-edit/user-edit.component.css":
+/***/ "./ClientApp/app/components/users/user-edit/password-edit/password-edit.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "input.ng-touched.ng-invalid{\r\n  background-color: #ffb3b3;\r\n  border: 2px solid red;\r\n}"
+module.exports = ""
 
 /***/ }),
 
-/***/ "./ClientApp/app/components/users/user-edit/user-edit.component.html":
+/***/ "./ClientApp/app/components/users/user-edit/password-edit/password-edit.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"col-sm-12\">\n  <div class=\"col-sm-6\">\n    <div class=\"panel panel-default\">\n      <div class=\"panel-heading\">\n        <h3>Dane logowania:</h3>\n      </div>\n      <div class=\"panel-body\">\n        <form (ngSubmit)=\"UpdatePassword()\" #userPasswordForm=\"ngForm\">\n          <div class=\"col-sm-12\">\n            <div class=\"col-sm-4\">\n              <label for=\"oldpassword\">Stare Hasło:</label>\n            </div>\n            <div class=\"col-sm-8\">\n              <input type=\"password\" name=\"oldpassword\" id=\"oldpassword\" class=\"form-control\"  [(ngModel)]=\"oldPassword\" required #oldpassword/>\n            </div>\n          </div>\n          <div class=\"col-sm-12\"><br></div>\n          \n          <div class=\"col-sm-12\">\n            <div class=\"col-sm-4\">\n              <label for=\"newPasswor\">Nowe Hasło:</label>\n            </div>\n            <div class=\"col-sm-8\">\n              <input type=\"password\"\n               name=\"newPasswor\" \n               id=\"newPasswor\"\n               class=\"form-control\"\n                [(ngModel)]=\"newPassword\" \n                required \n                minlength=\"6\"\n                #newPasswor/>\n            </div>\n          </div>\n          <div class=\"col-sm-12\"><br></div>\n          \n          <button type=\"submit\" class=\"btn btn-primary\" [disabled]=\"!userPasswordForm.valid\">Zmień Hasło</button>\n        </form>\n      </div>\n    </div>\n  </div>\n  <div class=\"col-sm-6\">\n    <div class=\"panel panel-default\">\n      <div class=\"panel-heading\">\n        <h3>Dane użytkownika:</h3>\n      </div>\n      <div class=\"panel-body\">\n        <form (ngSubmit)=\"UpdateUserData()\" #userDataForm=\"ngForm\">\n          <div class=\"col-sm-12\">\n            <div class=\"col-sm-4\">\n              <label for=\"name\">Nazwa:</label>\n            </div>\n            <div class=\"col-sm-8\">\n              <input type=\"text\" name=\"name\" id=\"name\" class=\"form-control\" [(ngModel)]=\"user.name\" required #name/>\n            </div>\n          </div>\n          <div class=\"col-sm-12\"><br></div>\n  \n          <div class=\"col-sm-12\">\n            <div class=\"col-sm-4\">\n              <label for=\"address\">Ulica:</label>\n            </div>\n            <div class=\"col-sm-8\">\n              <input type=\"text\" name=\"address\" id=\"address\" class=\"form-control\" [(ngModel)]=\"user.address\" required #address/>\n            </div>\n          </div>\n          <div class=\"col-sm-12\"><br></div>\n  \n          <div class=\"col-sm-12\">\n            <div class=\"col-sm-4\">\n              <label for=\"postCode\">Kod pocztowy:</label>\n            </div>\n            <div class=\"col-sm-8\">\n              <input type=\"text\" name=\"postCode\" id=\"postCode\" class=\"form-control\" [(ngModel)]=\"user.postCode\" required pattern=\"[0-9]{2}-[0-9]{3}\"/>\n            </div>\n          </div>\n          <div class=\"col-sm-12\"><br></div>\n  \n          <div class=\"col-sm-12\">\n            <div class=\"col-sm-4\">\n              <label for=\"city\">Miasto:</label>\n            </div>\n            <div class=\"col-sm-8\">\n              <input type=\"text\" name=\"city\" id=\"city\" class=\"form-control\" [(ngModel)]=\"user.city\" required #city/>\n            </div>\n          </div>\n          <div class=\"col-sm-12\"><br></div>\n  \n          <div class=\"col-sm-12\">\n            <div class=\"col-sm-4\">\n              <label for=\"nip\">NIP:</label>\n            </div>\n            <div class=\"col-sm-8\">\n              <input type=\"text\" name=\"nip\" id=\"nip\" class=\"form-control\" #nip [(ngModel)]=\"user.nip\" required pattern=\"[0-9]{10}\"/>\n            </div>\n          </div>\n          <div class=\"col-sm-12\"><br></div>\n\n          <button type=\"submit\" class=\"btn btn-primary\" [disabled]=\"!userDataForm.valid\">Zmień Dane</button>\n        </form>\n      </div>\n    </div>\n  </div>\n</div>"
+module.exports = "<div class=\"panel panel-default\">\n    <div class=\"panel-heading\">\n      <h3>Dane logowania:</h3>\n    </div>\n    <div class=\"panel-body\">\n      <form (ngSubmit)=\"UpdatePassword()\" #userPasswordForm=\"ngForm\">\n        <div class=\"col-sm-12\">\n          <div class=\"col-sm-4\">\n            <label for=\"oldpassword\">Stare Hasło:</label>\n          </div>\n          <div class=\"col-sm-8\">\n            <input type=\"password\" name=\"oldpassword\" id=\"oldpassword\" class=\"form-control\"  [(ngModel)]=\"oldPassword\" required #oldpassword/>\n          </div>\n        </div>\n        <div class=\"col-sm-12\"><br></div>\n        \n        <div class=\"col-sm-12\">\n          <div class=\"col-sm-4\">\n            <label for=\"newPasswor\">Nowe Hasło:</label>\n          </div>\n          <div class=\"col-sm-8\">\n            <input type=\"password\"\n             name=\"newPassword\"\n             class=\"form-control\"\n              [(ngModel)]=\"newPassword\" \n              required \n              minlength=\"6\"\n              #newPasswor/>\n          </div>\n        </div>\n        <div class=\"col-sm-12\"><br></div>\n        \n        <button type=\"submit\" class=\"btn btn-primary\" [disabled]=\"!userPasswordForm.valid\">Zmień Hasło</button>\n      </form>\n    </div>\n  </div>"
 
 /***/ }),
 
-/***/ "./ClientApp/app/components/users/user-edit/user-edit.component.ts":
+/***/ "./ClientApp/app/components/users/user-edit/password-edit/password-edit.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserEditComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PasswordEditComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_user_services_user_services__ = __webpack_require__("./ClientApp/app/services/user services/user.services.ts");
@@ -1950,37 +1952,388 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var UserEditComponent = /** @class */ (function () {
-    function UserEditComponent(userService) {
+var PasswordEditComponent = /** @class */ (function () {
+    function PasswordEditComponent(userService) {
         this.userService = userService;
         this.oldPassword = '';
         this.newPassword = '';
         this.passwordData = new __WEBPACK_IMPORTED_MODULE_3__models_change_password_model__["a" /* ChangePasswordModel */]();
-        this.user = this.userService.userData;
     }
-    UserEditComponent.prototype.ngOnInit = function () {
-        this.userService.CheckTokenExpired();
+    PasswordEditComponent.prototype.ngOnInit = function () {
     };
-    UserEditComponent.prototype.UpdatePassword = function () {
+    PasswordEditComponent.prototype.UpdatePassword = function () {
         this.passwordData.password = this.oldPassword;
         this.passwordData.newPassword = this.newPassword;
         this.userService.ChangePassword(this.passwordData);
         this.passwordForm.reset();
     };
-    UserEditComponent.prototype.UpdateUserData = function () {
-        this.userService.ChangeUserData(this.user);
-    };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])('userPasswordForm'),
         __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* NgForm */])
-    ], UserEditComponent.prototype, "passwordForm", void 0);
+    ], PasswordEditComponent.prototype, "passwordForm", void 0);
+    PasswordEditComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-password-edit',
+            template: __webpack_require__("./ClientApp/app/components/users/user-edit/password-edit/password-edit.component.html"),
+            styles: [__webpack_require__("./ClientApp/app/components/users/user-edit/password-edit/password-edit.component.css")]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__services_user_services_user_services__["a" /* UserServices */]])
+    ], PasswordEditComponent);
+    return PasswordEditComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./ClientApp/app/components/users/user-edit/smtp-configuration/help-auto-config/help-auto-config.component.css":
+/***/ (function(module, exports) {
+
+module.exports = "input.ng-touched.ng-invalid{\r\n  background-color: #ffb3b3;\r\n  border: 2px solid red;\r\n}"
+
+/***/ }),
+
+/***/ "./ClientApp/app/components/users/user-edit/smtp-configuration/help-auto-config/help-auto-config.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div style=\"max-width: 60%; text-align: center; position: relative; margin-left:20%;\">\n  <form #autocofigForm=\"ngForm\" (ngSubmit)=\"Autoconfig();\">\n    <div class=\"form-group\">\n      <label for=\"username\">Email:</label>\n      <input type=\"email\" name=\"username\" class=\"form-control\" [(ngModel)]=\"config.username\" #email=\"ngModel\" required pattern=\"[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$\"/>\n    </div>\n    <div><br></div>\n    <div class=\"form-group\">\n      <label for=\"password\">Hasło:</label>\n      <input type=\"password\" name=\"password\" class=\"form-control\" [(ngModel)]=\"config.password\" #password=\"ngModel\" required/>\n    </div>\n    <div><br></div>\n    <div class=\"form-group\">\n      <label for=\"domain\">Dostawca poczty email:</label>\n      <select class=\"form-control\" name=\"domain\" [(ngModel)]=\"config.domain\" #domain=\"ngModel\" required>\n        <option *ngFor=\"let email of emailProviders['providers']\" value=\"{{email}}\">{{email}}</option>\n      </select>\n    </div>\n    <div><br></div>\n    <div *ngIf=\"!changingStart\">\n      <button type=\"submit\" class=\"btn btn-primary\">Konfiguruj</button>\n    </div>\n    <div *ngIf=\"changingStart\" style=\"text-align:center;\">\n      <p>Proszę czekać</p>\n      <span class=\"glyphicon glyphicon-cog\" style=\"font-size:24px\"></span>\n    </div>\n  </form>\n</div>\n<div><hr></div>"
+
+/***/ }),
+
+/***/ "./ClientApp/app/components/users/user-edit/smtp-configuration/help-auto-config/help-auto-config.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HelpAutoConfigComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_email_service_email_service__ = __webpack_require__("./ClientApp/app/services/email service/email.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_auto_config_model__ = __webpack_require__("./ClientApp/app/models/auto-config.model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__enums_email_service_providers_enum__ = __webpack_require__("./ClientApp/app/enums/email-service-providers.enum.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var HelpAutoConfigComponent = /** @class */ (function () {
+    function HelpAutoConfigComponent(emailProviders, emailService) {
+        this.emailProviders = emailProviders;
+        this.emailService = emailService;
+        this.config = new __WEBPACK_IMPORTED_MODULE_2__models_auto_config_model__["a" /* AutoConfig */]();
+        this.changingStart = false;
+    }
+    HelpAutoConfigComponent.prototype.ngOnInit = function () {
+    };
+    HelpAutoConfigComponent.prototype.Autoconfig = function () {
+        var _this = this;
+        this.changingStart = true;
+        this.emailService.SmtpAutoConfig(this.config);
+        this.smtpChangSub = this.emailService.autoConfigResult.subscribe(function (result) {
+            if (result != null) {
+                _this.smtpConfig = result;
+                alert("Konfiguracja ukończona pomyślnie.\n\nTwoje ustawienia to:\n\nHost: "
+                    + _this.smtpConfig.host
+                    + "\nEmail:" + _this.smtpConfig.username
+                    + "\nSSL: " + (_this.smtpConfig.sslEnabled ? "Tak" : "Nie")
+                    + "\nPort: " + _this.smtpConfig.port);
+            }
+            _this.changingStart = false;
+            _this.smtpChangSub.unsubscribe();
+        });
+    };
+    HelpAutoConfigComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-help-auto-config',
+            template: __webpack_require__("./ClientApp/app/components/users/user-edit/smtp-configuration/help-auto-config/help-auto-config.component.html"),
+            styles: [__webpack_require__("./ClientApp/app/components/users/user-edit/smtp-configuration/help-auto-config/help-auto-config.component.css")],
+            providers: [__WEBPACK_IMPORTED_MODULE_3__enums_email_service_providers_enum__["a" /* EmailServiceProviders */]]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__enums_email_service_providers_enum__["a" /* EmailServiceProviders */], __WEBPACK_IMPORTED_MODULE_1__services_email_service_email_service__["a" /* EmailService */]])
+    ], HelpAutoConfigComponent);
+    return HelpAutoConfigComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./ClientApp/app/components/users/user-edit/smtp-configuration/help-info/help-info.component.css":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./ClientApp/app/components/users/user-edit/smtp-configuration/help-info/help-info.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div>\n  <h4>Konfiguracja SMTP</h4>\n  <p>Pozwala na wysyłanie wiadomości email do Twoich klientów.</p>\n  <p>\n    Nie musisz konfigurować tych ustawień, oprogramwanie posiada\n    już skonfigurowane ustawienia, tak aby klieci mogli odbierać wiadomości.\n  </p>\n  <p>\n    Każda wiadomość wysłana z tego serwisu jest podpisywana Twoją nazwą firmy. Jeśli klient będzie chciał odpowiedzieć\n    na Twojego maila, zostanie on przekierownany na email, który był podczas rejestracji.\n  </p>\n  <p>\n    Jeżeli chcesz skonfigurować te ustawienia, dowiedz się kto jest Twoim dostawcą usług pocztowych\n    i jakiej konfiguracji należy użyć, aby zintegrować się z pocztą. W przypadku gdy podany przez\n    Ciebie port nie będzie działał zostanie ustawiony domyślny port 25, jeśli na nim pojawi się błąd\n    program wyświetli komunikat o nie udanej próbie konfiguracji. Niektóre serwisy taki jak Gmail, Yahoo\n    wymagają aby włączyć w ustawieniach dostęp do poczty dla mniej bezpiecznych aplikacji.\n    Poniżej podano adresy do konfiguracji do kilku popularnych serwisów pocztowych:\n  </p>\n  <ul style=\"list-style:lower-alpha;\">\n    <li><a target=\"_blank\" href=\"https://support.google.com/a/answer/176600?hl=pl\">Gmail</a></li>\n    <li><a target=\"_blank\" href=\"https://help.yahoo.com/kb/SLN4075.html\">Yahoo</a></li>\n    <li>\n      <a target=\"_blank\" href=\"https://support.office.com/en-us/article/pop-imap-and-smtp-settings-for-outlook-com-d088b986-291d-42b8-9564-9c414e2aa040?ui=en-US&rs=en-US&ad=US\">\n        Microsoft Outlook\n      </a>\n    </li>\n    <li><a target=\"_blank\" href=\"https://pomoc.home.pl/baza-wiedzy/jak-skonfigurowac-program-do-obslugi-poczty-e-mail\">Home</a></li>\n    <li><a target=\"_blank\" href=\"https://pomoc.wp.pl/jak-skonfigurowac-program-pocztowy\">Wirtualna Polska / O2</a></li>\n    <li><a target=\"_blank\" href=\"http://m.poczta.onet.pl/pomoc/servers.html\" >Onet</a></li>\n  </ul>\n  <p>Jeżeli chcesz aby system spróbował automatycznie skonfigurować ustawienia SMTP przejdź do Autokonfiguracji.</p>\n  <p>Zostaniesz poniformowany jakie ustawienia zostały wprowadzone</p>\n  <br>\n  <hr>\n</div>"
+
+/***/ }),
+
+/***/ "./ClientApp/app/components/users/user-edit/smtp-configuration/help-info/help-info.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HelpInfoComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var HelpInfoComponent = /** @class */ (function () {
+    function HelpInfoComponent() {
+    }
+    HelpInfoComponent.prototype.ngOnInit = function () {
+    };
+    HelpInfoComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-help-info',
+            template: __webpack_require__("./ClientApp/app/components/users/user-edit/smtp-configuration/help-info/help-info.component.html"),
+            styles: [__webpack_require__("./ClientApp/app/components/users/user-edit/smtp-configuration/help-info/help-info.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], HelpInfoComponent);
+    return HelpInfoComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./ClientApp/app/components/users/user-edit/smtp-configuration/smtp-configuration.component.css":
+/***/ (function(module, exports) {
+
+module.exports = ".switch {\r\n  position: relative;\r\n  display: inline-block;\r\n  width: 30px;\r\n  height: 17px;\r\n}\r\n\r\n.switch input {\r\n  display:none;\r\n}\r\n\r\n.slider {\r\n  position: absolute;\r\n  cursor: pointer;\r\n  top: 0;\r\n  left: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  background-color: #ccc;\r\n  -webkit-transition: .4s;\r\n  transition: .4s;\r\n}\r\n\r\n.slider:before {\r\n  position: absolute;\r\n  content: \"\";\r\n  height: 13px;\r\n  width: 13px;\r\n  left: 2px;\r\n  bottom: 2px;\r\n  background-color: white;\r\n  -webkit-transition: .4s;\r\n  transition: .4s;\r\n}\r\n\r\ninput:checked + .slider {\r\n  background-color: #1565c0;\r\n}\r\n\r\ninput:focus + .slider {\r\n  -webkit-box-shadow: 0 0 1px #1565c0;\r\n          box-shadow: 0 0 1px #1565c0;\r\n}\r\n\r\ninput:checked + .slider:before {\r\n  -webkit-transform: translateX(13px);\r\n  transform: translateX(13px);\r\n}\r\n\r\n.glyphicon-ok-circle{\r\n  color: rgb(86, 141, 4);\r\n}"
+
+/***/ }),
+
+/***/ "./ClientApp/app/components/users/user-edit/smtp-configuration/smtp-configuration.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-heading\">\n    <h3>Ustawienia serwisu SMTP</h3>\n  </div>\n  <div class=\"panel-body\">\n    <div class=\"col-sm-12\">\n      Uwaga! Zmiana tych ustawień może spowodować, że wysłane wiadomośći nie będą docierać do odbiorcy\n      <span class=\"col-sm-12\">\n        <span style=\"float:left;\"><strong>Odblikuj zmianę konfiguracji: </strong></span>\n        <label class=\"switch\" style=\"float:left; margin-left: 5px;\">\n          <input type=\"checkbox\" #unlockForm [(ngModel)]=\"allowedToConfiguration\" (click)=\"ActiveForm()\">\n          <span class=\"slider\"></span>\n        </label>\n      </span>\n      <div class=\"col-sm-4\" style=\"float:none;\"></div>\n    </div>\n    <div class=\"col-sm-12\"><hr></div>\n    <div>\n      <form #smtpForm=\"ngForm\" autocomplete=\"off\" (ngSubmit)=\"ChangeSmtp()\">\n        <div class=\"form-group col-sm-12\">\n          <div class=\"col-sm-3\">\n            <label>Hosta serwera:</label>\n          </div>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" type=\"text\" name=\"host\" #host=\"ngModel\" [(ngModel)]=\"smtpConfig.host\" required>\n          </div>\n        </div>\n        <div class=\"form-group col-sm-12\">\n          <div class=\"col-sm-3\">\n            <label>Port:</label>\n          </div>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" type=\"number\" name=\"port\" #port=\"ngModel\" [(ngModel)]=\"smtpConfig.port\">\n          </div>\n        </div>\n        <div class=\"form-group col-sm-12\">\n          <div class=\"col-sm-3\">\n            <label>Nazwa użytkownika:</label>\n          </div>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" type=\"text\" name=\"username\" #username=\"ngModel\" [(ngModel)]=\"smtpConfig.username\" placeholder=\"najczęść to Twój email\" required>\n          </div>\n        </div>\n        <div class=\"form-group col-sm-12\">\n          <div class=\"col-sm-3\">\n            <label>Hasło:</label>\n          </div>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" type=\"password\" name=\"password\" #password=\"ngModel\" [(ngModel)]=\"smtpConfig.password\" required>\n          </div>\n        </div>\n        <div class=\"form-group col-sm-12\">\n          <div class=\"col-sm-4\">\n            <label>SSL włączone:</label>\n          </div>\n          <div class=\"col-sm-8\">\n            <label class=\"radio-inline\"><input type=\"radio\" #sslEnabled=\"ngModel\" name=\"sslEnabled\" [value]=\"true\" [(ngModel)]=\"smtpConfig.sslEnabled\" required>Tak</label>\n            <label class=\"radio-inline\"><input type=\"radio\" #sslEnabled=\"ngModel\" name=\"sslEnabled\" [value]=\"false\" [(ngModel)]=\"smtpConfig.sslEnabled\" required>Nie</label>\n          </div>\n        </div>\n        <div *ngIf=\"!changingStart && !changeSucceded\" class=\"col-sm-12\">\n          <div class=\"col-sm-9\">\n            <button type=\"submit\" class=\"btn btn-primary\" [disabled]=\"!smtpForm.valid\">Zmień ustawienia</button>\n            <button type=\"button\" class=\"btn btn-warning\" [disabled]=\"!unlockForm.checked\" (click)=\"ResetSmtpSettings()\">Ustaw domyślne</button>\n          </div>\n          <div class=\"col-sm-3 pull-right\">\n            <button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#helpModal\">Pomoc</button>\n          </div>\n        </div>\n        <div *ngIf=\"changingStart\" style=\"text-align:center;\">\n          <p>Proszę czekać</p>\n          <span class=\"glyphicon glyphicon-cog\" style=\"font-size:24px\"></span>\n        </div>\n        <div *ngIf=\"changeSucceded\" style=\"text-align:center;\">\n          <p>Zapisano pomyślnie</p>\n          <span class=\"glyphicon glyphicon-ok-circle\" style=\"font-size:24px\"></span>\n        </div>\n      </form>\n    </div>\n  </div>\n</div>\n<!--Modal for SMTP help-->\n<div id=\"helpModal\" class=\"modal fade\" role=\"dialog\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" (click)=\"configPage = false\">&times;</button>\n        <h4 class=\"modal-title\">Pomoc</h4>\n      </div>\n      <div class=\"modal-body\">\n        <app-help-info *ngIf=\"!configPage\"></app-help-info>\n        <app-help-auto-config *ngIf=\"configPage\"></app-help-auto-config>\n        <button type=\"button\" class=\"btn btn-primary\" (click)=\"changeInfoPage()\">{{configPage ? 'Do informacji' : 'Do autokonfiguracji'}}</button>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\" (click)=\"configPage = false\">Zamknij</button>\n      </div>\n    </div>\n  </div>\n</div>"
+
+/***/ }),
+
+/***/ "./ClientApp/app/components/users/user-edit/smtp-configuration/smtp-configuration.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SmtpConfigurationComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_smtp_configuration_model__ = __webpack_require__("./ClientApp/app/models/smtp-configuration.model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_email_service_email_service__ = __webpack_require__("./ClientApp/app/services/email service/email.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var SmtpConfigurationComponent = /** @class */ (function () {
+    function SmtpConfigurationComponent(emailService) {
+        this.emailService = emailService;
+        this.smtpConfig = new __WEBPACK_IMPORTED_MODULE_2__models_smtp_configuration_model__["a" /* SmtpConfigurationModel */]();
+        this.configPage = false;
+        this.allowedToConfiguration = false;
+        this.changingStart = false;
+        this.changeSucceded = false;
+    }
+    SmtpConfigurationComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        setTimeout(function () {
+            _this.smtpForm.form.disable();
+        }, 200);
+    };
+    SmtpConfigurationComponent.prototype.ActiveForm = function () {
+        if (this.unlockedFormSwitch.nativeElement.checked) {
+            this.smtpForm.form.enable();
+        }
+        else {
+            this.smtpForm.form.disable();
+        }
+    };
+    SmtpConfigurationComponent.prototype.ChangeSmtp = function () {
+        var _this = this;
+        this.emailService.ChangeSmtpSettings(this.smtpConfig);
+        this.changingStart = true;
+        this.emailService.smtpSettingsChanged.subscribe(function (result) {
+            if (result) {
+                _this.changingStart = false;
+                _this.changeSucceded = result;
+                setTimeout(function () {
+                    _this.changeSucceded = false;
+                }, 1500);
+            }
+            else
+                _this.changingStart = false;
+        });
+    };
+    SmtpConfigurationComponent.prototype.ResetSmtpSettings = function () {
+        var _this = this;
+        this.emailService.ResetDefaults();
+        this.changingStart = true;
+        this.emailService.smtpSettingsChanged.subscribe(function (result) {
+            if (result) {
+                _this.changingStart = false;
+                _this.changeSucceded = result;
+                setTimeout(function () {
+                    _this.changeSucceded = false;
+                }, 1500);
+            }
+            else
+                _this.changingStart = false;
+        });
+    };
+    SmtpConfigurationComponent.prototype.changeInfoPage = function () {
+        this.configPage = !this.configPage;
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])('unlockForm'),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
+    ], SmtpConfigurationComponent.prototype, "unlockedFormSwitch", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])('smtpForm'),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* NgForm */])
+    ], SmtpConfigurationComponent.prototype, "smtpForm", void 0);
+    SmtpConfigurationComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-smtp-configuration',
+            template: __webpack_require__("./ClientApp/app/components/users/user-edit/smtp-configuration/smtp-configuration.component.html"),
+            styles: [__webpack_require__("./ClientApp/app/components/users/user-edit/smtp-configuration/smtp-configuration.component.css")]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__services_email_service_email_service__["a" /* EmailService */]])
+    ], SmtpConfigurationComponent);
+    return SmtpConfigurationComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./ClientApp/app/components/users/user-edit/user-data-edit/user-data-edit.component.css":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./ClientApp/app/components/users/user-edit/user-data-edit/user-data-edit.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"panel panel-default\">\n    <div class=\"panel-heading\">\n      <h3>Dane użytkownika:</h3>\n    </div>\n    <div class=\"panel-body\">\n      <form (ngSubmit)=\"UpdateUserData()\" #userDataForm=\"ngForm\">\n        <div class=\"col-sm-12\">\n          <div class=\"col-sm-4\">\n            <label for=\"name\">Nazwa:</label>\n          </div>\n          <div class=\"col-sm-8\">\n            <input type=\"text\" name=\"name\" id=\"name\" class=\"form-control\" [(ngModel)]=\"user.name\" required #name/>\n          </div>\n        </div>\n        <div class=\"col-sm-12\"><br></div>\n\n        <div class=\"col-sm-12\">\n          <div class=\"col-sm-4\">\n            <label for=\"address\">Ulica:</label>\n          </div>\n          <div class=\"col-sm-8\">\n            <input type=\"text\" name=\"address\" id=\"address\" class=\"form-control\" [(ngModel)]=\"user.address\" required #address/>\n          </div>\n        </div>\n        <div class=\"col-sm-12\"><br></div>\n\n        <div class=\"col-sm-12\">\n          <div class=\"col-sm-4\">\n            <label for=\"postCode\">Kod pocztowy:</label>\n          </div>\n          <div class=\"col-sm-8\">\n            <input type=\"text\" name=\"postCode\" id=\"postCode\" class=\"form-control\" [(ngModel)]=\"user.postCode\" required pattern=\"[0-9]{2}-[0-9]{3}\"/>\n          </div>\n        </div>\n        <div class=\"col-sm-12\"><br></div>\n\n        <div class=\"col-sm-12\">\n          <div class=\"col-sm-4\">\n            <label for=\"city\">Miasto:</label>\n          </div>\n          <div class=\"col-sm-8\">\n            <input type=\"text\" name=\"city\" id=\"city\" class=\"form-control\" [(ngModel)]=\"user.city\" required #city/>\n          </div>\n        </div>\n        <div class=\"col-sm-12\"><br></div>\n\n        <div class=\"col-sm-12\">\n          <div class=\"col-sm-4\">\n            <label for=\"nip\">NIP:</label>\n          </div>\n          <div class=\"col-sm-8\">\n            <input type=\"text\" name=\"nip\" id=\"nip\" class=\"form-control\" #nip [(ngModel)]=\"user.nip\" required pattern=\"[0-9]{10}\"/>\n          </div>\n        </div>\n        <div class=\"col-sm-12\"><br></div>\n\n        <button type=\"submit\" class=\"btn btn-primary\" [disabled]=\"!userDataForm.valid\">Zmień Dane</button>\n      </form>\n    </div>\n  </div>"
+
+/***/ }),
+
+/***/ "./ClientApp/app/components/users/user-edit/user-data-edit/user-data-edit.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserDataEditComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_user_services_user_services__ = __webpack_require__("./ClientApp/app/services/user services/user.services.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var UserDataEditComponent = /** @class */ (function () {
+    function UserDataEditComponent(userService) {
+        this.userService = userService;
+        this.user = this.userService.userData;
+    }
+    UserDataEditComponent.prototype.ngOnInit = function () {
+    };
+    UserDataEditComponent.prototype.UpdateUserData = function () {
+        this.userService.ChangeUserData(this.user);
+    };
+    UserDataEditComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-user-data-edit',
+            template: __webpack_require__("./ClientApp/app/components/users/user-edit/user-data-edit/user-data-edit.component.html"),
+            styles: [__webpack_require__("./ClientApp/app/components/users/user-edit/user-data-edit/user-data-edit.component.css")]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_user_services_user_services__["a" /* UserServices */]])
+    ], UserDataEditComponent);
+    return UserDataEditComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./ClientApp/app/components/users/user-edit/user-edit.component.css":
+/***/ (function(module, exports) {
+
+module.exports = "input.ng-touched.ng-invalid{\r\n  background-color: #ffb3b3;\r\n  border: 2px solid red;\r\n}"
+
+/***/ }),
+
+/***/ "./ClientApp/app/components/users/user-edit/user-edit.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"col-sm-12\">\n  <div class=\"col-sm-6\">\n    <!-- Password Edit -->\n    <app-password-edit></app-password-edit>\n    <!-- SMTP Configuration -->\n    <app-smtp-configuration></app-smtp-configuration>\n  </div>\n  <div class=\"col-sm-6\">\n    <app-user-data-edit></app-user-data-edit>\n  </div>\n</div>"
+
+/***/ }),
+
+/***/ "./ClientApp/app/components/users/user-edit/user-edit.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserEditComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_user_services_user_services__ = __webpack_require__("./ClientApp/app/services/user services/user.services.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var UserEditComponent = /** @class */ (function () {
+    function UserEditComponent(userService) {
+        this.userService = userService;
+    }
+    UserEditComponent.prototype.ngOnInit = function () {
+        this.userService.CheckTokenExpired();
+    };
     UserEditComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'app-user-edit',
             template: __webpack_require__("./ClientApp/app/components/users/user-edit/user-edit.component.html"),
             styles: [__webpack_require__("./ClientApp/app/components/users/user-edit/user-edit.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__services_user_services_user_services__["a" /* UserServices */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_user_services_user_services__["a" /* UserServices */]])
     ], UserEditComponent);
     return UserEditComponent;
 }());
@@ -2050,12 +2403,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__register_register_component__ = __webpack_require__("./ClientApp/app/components/users/register/register.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__users_routing_module__ = __webpack_require__("./ClientApp/app/components/users/users-routing.module.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__user_edit_user_edit_component__ = __webpack_require__("./ClientApp/app/components/users/user-edit/user-edit.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__user_edit_password_edit_password_edit_component__ = __webpack_require__("./ClientApp/app/components/users/user-edit/password-edit/password-edit.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__user_edit_user_data_edit_user_data_edit_component__ = __webpack_require__("./ClientApp/app/components/users/user-edit/user-data-edit/user-data-edit.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__user_edit_smtp_configuration_smtp_configuration_component__ = __webpack_require__("./ClientApp/app/components/users/user-edit/smtp-configuration/smtp-configuration.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__user_edit_smtp_configuration_help_info_help_info_component__ = __webpack_require__("./ClientApp/app/components/users/user-edit/smtp-configuration/help-info/help-info.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__user_edit_smtp_configuration_help_auto_config_help_auto_config_component__ = __webpack_require__("./ClientApp/app/components/users/user-edit/smtp-configuration/help-auto-config/help-auto-config.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
+
+
 
 
 
@@ -2072,7 +2435,11 @@ var UsersModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_3__login_login_component__["a" /* LoginComponent */],
                 __WEBPACK_IMPORTED_MODULE_4__register_register_component__["a" /* RegisterComponent */],
                 __WEBPACK_IMPORTED_MODULE_6__user_edit_user_edit_component__["a" /* UserEditComponent */],
-                __WEBPACK_IMPORTED_MODULE_6__user_edit_user_edit_component__["a" /* UserEditComponent */]
+                __WEBPACK_IMPORTED_MODULE_7__user_edit_password_edit_password_edit_component__["a" /* PasswordEditComponent */],
+                __WEBPACK_IMPORTED_MODULE_8__user_edit_user_data_edit_user_data_edit_component__["a" /* UserDataEditComponent */],
+                __WEBPACK_IMPORTED_MODULE_9__user_edit_smtp_configuration_smtp_configuration_component__["a" /* SmtpConfigurationComponent */],
+                __WEBPACK_IMPORTED_MODULE_10__user_edit_smtp_configuration_help_info_help_info_component__["a" /* HelpInfoComponent */],
+                __WEBPACK_IMPORTED_MODULE_11__user_edit_smtp_configuration_help_auto_config_help_auto_config_component__["a" /* HelpAutoConfigComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_1__angular_common__["b" /* CommonModule */],
@@ -2082,6 +2449,31 @@ var UsersModule = /** @class */ (function () {
         })
     ], UsersModule);
     return UsersModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./ClientApp/app/enums/email-service-providers.enum.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EmailServiceProviders; });
+var EmailServiceProviders = /** @class */ (function () {
+    function EmailServiceProviders() {
+        this.providers = [
+            "Gmail",
+            "Yahoo",
+            "Outlook",
+            "Home",
+            "Wirtualna Polska",
+            "O2",
+            "Onet",
+            "Inny dostawca"
+        ];
+    }
+    return EmailServiceProviders;
 }());
 
 
@@ -2098,6 +2490,21 @@ var TaxValue = /** @class */ (function () {
         this.values = [0, 5, 8, 23];
     }
     return TaxValue;
+}());
+
+
+
+/***/ }),
+
+/***/ "./ClientApp/app/models/auto-config.model.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AutoConfig; });
+var AutoConfig = /** @class */ (function () {
+    function AutoConfig() {
+    }
+    return AutoConfig;
 }());
 
 
@@ -2203,6 +2610,21 @@ var RegisterModel = /** @class */ (function () {
     function RegisterModel() {
     }
     return RegisterModel;
+}());
+
+
+
+/***/ }),
+
+/***/ "./ClientApp/app/models/smtp-configuration.model.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SmtpConfigurationModel; });
+var SmtpConfigurationModel = /** @class */ (function () {
+    function SmtpConfigurationModel() {
+    }
+    return SmtpConfigurationModel;
 }());
 
 
@@ -2594,6 +3016,15 @@ var EmailHttpService = /** @class */ (function () {
     EmailHttpService.prototype.SendEmail = function (mesageConfig) {
         return this.httpService.post("api/email/SendMail", mesageConfig, { headers: new __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpHeaders */]().set('Authorization', "Bearer " + this.commonData.token['token']) });
     };
+    EmailHttpService.prototype.ChangeSmtpSettings = function (settings) {
+        return this.httpService.post("api/email/ChangeEmailConfiguration", settings, { headers: new __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpHeaders */]().set('Authorization', "Bearer " + this.commonData.token['token']) });
+    };
+    EmailHttpService.prototype.ResetDefaults = function () {
+        return this.httpService.post("api/email/ResetSmtpSettings", null, { headers: new __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpHeaders */]().set('Authorization', "Bearer " + this.commonData.token['token']) });
+    };
+    EmailHttpService.prototype.SmtpAutoConfig = function (config) {
+        return this.httpService.post("api/email/EmailAutoConfig", config, { headers: new __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpHeaders */]().set('Authorization', "Bearer " + this.commonData.token['token']) });
+    };
     EmailHttpService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__common_service__["a" /* CommonService */], __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]])
@@ -2612,6 +3043,7 @@ var EmailHttpService = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EmailService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__email_http_service__ = __webpack_require__("./ClientApp/app/services/email service/email-http.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Subject__ = __webpack_require__("./node_modules/rxjs/_esm5/Subject.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2623,15 +3055,50 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var EmailService = /** @class */ (function () {
     function EmailService(emailHttp) {
         this.emailHttp = emailHttp;
+        this.smtpSettingsChanged = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Subject__["a" /* Subject */]();
+        this.autoConfigResult = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Subject__["a" /* Subject */]();
     }
     EmailService.prototype.SendMessage = function (message) {
         this.emailHttp.SendEmail(message).subscribe(function (response) {
             alert("Wiadomość wysła na pomyślnie");
         }, function (error) {
             alert("Nie udało się wysłać");
+        });
+    };
+    EmailService.prototype.ChangeSmtpSettings = function (settings) {
+        var _this = this;
+        this.emailHttp.ChangeSmtpSettings(settings).subscribe(function (response) {
+            _this.smtpSettingsChanged.next(true);
+            return true;
+        }, function (error) {
+            alert("wystąpił błąd");
+            _this.smtpSettingsChanged.next(false);
+            return false;
+        });
+    };
+    EmailService.prototype.ResetDefaults = function () {
+        var _this = this;
+        this.emailHttp.ResetDefaults().subscribe(function (response) {
+            _this.smtpSettingsChanged.next(true);
+            return true;
+        }, function (error) {
+            alert("wystąpił błąd");
+            _this.smtpSettingsChanged.next(false);
+            return false;
+        });
+    };
+    EmailService.prototype.SmtpAutoConfig = function (config) {
+        var _this = this;
+        this.emailHttp.SmtpAutoConfig(config).subscribe(function (result) {
+            _this.autoConfigResult.next(result);
+            console.log("autoConfigResult");
+        }, function (error) {
+            _this.autoConfigResult.next(null);
+            alert("Błędna konfiguracja");
         });
     };
     EmailService = __decorate([

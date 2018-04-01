@@ -1,4 +1,4 @@
-import { CustomerSendEmailComponent } from './customer-send-email/customer-send-email.component';
+
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 
@@ -8,6 +8,7 @@ import { CustomerDetailsComponent } from "./customer-details/customer-details.co
 import { CustomerEditComponent } from "./customer-edit/customer-edit.component";
 import { CustomerInvoicesComponent } from './customer-invoices/customer-invoices.component';
 import { CanActivateGuard } from "../../services/local authorization/can-activate-guard.service";
+import { CustomerSendEmailComponent } from "../email/customer-send-email/customer-send-email.component";
 
 const customersRouting: Routes = [
     {path: 'customer', component: CustomerComponent, canActivate: [CanActivateGuard]},
