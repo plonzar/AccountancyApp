@@ -10,7 +10,7 @@ import { EmailService } from './../../../../services/email service/email.service
 })
 export class SmtpConfigurationComponent implements OnInit{
 
-  @ViewChild('unlockForm') unlockedFormSwitch: ElementRef;
+  @ViewChild('unlockForm') unlockedForm: ElementRef;
   @ViewChild('smtpForm') smtpForm: NgForm;
 
   smtpConfig: SmtpConfigurationModel = new SmtpConfigurationModel();
@@ -28,7 +28,7 @@ export class SmtpConfigurationComponent implements OnInit{
   }
 
   ActiveForm(){
-    if (this.unlockedFormSwitch.nativeElement.checked){
+    if(this.unlockedForm.nativeElement.checked){
       this.smtpForm.form.enable();
     }
     else{

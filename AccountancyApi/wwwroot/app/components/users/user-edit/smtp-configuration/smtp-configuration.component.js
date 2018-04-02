@@ -29,7 +29,7 @@ var SmtpConfigurationComponent = /** @class */ (function () {
         }, 200);
     };
     SmtpConfigurationComponent.prototype.ActiveForm = function () {
-        if (this.unlockedFormSwitch.nativeElement.checked) {
+        if (this.unlockedForm.nativeElement.checked) {
             this.smtpForm.form.enable();
         }
         else {
@@ -74,7 +74,7 @@ var SmtpConfigurationComponent = /** @class */ (function () {
     __decorate([
         core_1.ViewChild('unlockForm'),
         __metadata("design:type", core_1.ElementRef)
-    ], SmtpConfigurationComponent.prototype, "unlockedFormSwitch", void 0);
+    ], SmtpConfigurationComponent.prototype, "unlockedForm", void 0);
     __decorate([
         core_1.ViewChild('smtpForm'),
         __metadata("design:type", forms_1.NgForm)

@@ -68,6 +68,7 @@ namespace AccountancyApi.Models
             try
             {
                 client.Send(mailMessage);
+                client.Dispose();
                 return true;
             }
             catch (Exception error)
@@ -89,7 +90,7 @@ namespace AccountancyApi.Models
                 currentEmailConfig.SslEnabled = emailConfig.SslEnabled;
                 currentEmailConfig.Username = emailConfig.Username;
 
-                //1) try to send message with user settings
+                //1) try to send message with this settings
                 var message = new EmailMessageViewModel
                 {
                     MessageBody = "test",
@@ -100,15 +101,15 @@ namespace AccountancyApi.Models
                 SetupEmailConfig(user);
                 var success = SendMessage(message, user);
 
-                //if 1) failed, program try to send message with default port number 25
+                //if 1) faild next program try to send message with port number 587
                 if (!success)
                 {
-                    currentEmailConfig.Port = 25;
+                    currentEmailConfig.Port = 587;
                     SetupEmailConfig(user);
                     success = SendMessage(message, user);
                 }
 
-                //if sending was successful changes are saved
+                //if successful changes are saved
                 if (success)
                 {
                     appContext.SaveChanges();
@@ -177,14 +178,11 @@ namespace AccountancyApi.Models
         public EmailConfiguration SmtpAutoConfiguration(AutoConfigurationViewModel config,UserEntity user)
         {
             var currentEmailConfig = appContext.EmailsConfigurations.Where(c => c.User == user).SingleOrDefault();
-
             Dictionary<string, string> choosenProvider = new Dictionary<string, string>();
-
             string[] possibleSmtp = { };
-
             bool tryTestingSmtpServers = false;
 
-            //Choose domain settings
+            //Choose domain
             switch (config.Domain)
             {
                 case "Gmail":
@@ -216,7 +214,7 @@ namespace AccountancyApi.Models
                     break;
             }
            
-            //set Configuration
+            //setConfiguration
 
             currentEmailConfig.Host = choosenProvider["Host"];
             currentEmailConfig.Password = config.Password;
@@ -224,7 +222,7 @@ namespace AccountancyApi.Models
             currentEmailConfig.SslEnabled = true;
             currentEmailConfig.Username = config.UserName;
 
-            //test for configured data
+            //test for passed data
             //try to send message to addres in DefaultEmailConfig class
             var message = new EmailMessageViewModel
             {
@@ -236,7 +234,7 @@ namespace AccountancyApi.Models
             SetupEmailConfig(user);
             var success = SendMessage(message, user);
 
-            //if sending wasn't successful, program try with diffrent port from CommonPorts class
+            //if bad try with diffrent port from CommonPorts
 
             if (!success)
             {
@@ -252,9 +250,7 @@ namespace AccountancyApi.Models
                 }
 
                 //If user passed different host than these in CommonUsedEmailProviders class
-                //and first configuration failed, program will try to change host name and
-                //test configuration on default port 25, 
-                //if this fail, user will get message about error
+                //Testing on default port 25
                 if (tryTestingSmtpServers)
                 {
                     currentEmailConfig.Port = 25;
@@ -280,7 +276,7 @@ namespace AccountancyApi.Models
             return null;
         }
 
-        //Return array of possible smtp servers created with common beginings and domain taken from user email
+        //Return array of possible smtp servers created with common beginings and domain name taken from user email
         private string[] FetchDomainSmtp(string email)
         {
             var emailArray = email.Split("@");

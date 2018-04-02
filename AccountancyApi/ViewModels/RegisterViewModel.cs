@@ -37,5 +37,7 @@ namespace AccountancyApi.ViewModels
 
         [Required]
         public string SpecialKey { get; set; }
+
+
     }
 }

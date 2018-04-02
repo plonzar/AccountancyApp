@@ -38,7 +38,9 @@
               class="form-control" 
               [ngModel]="registerData.password" 
               autocomplete="off" 
+              minlength="6"
               #password="ngModel"
+              placeholder="min. 6 znaków"
               required/>
             </div>
           </div>

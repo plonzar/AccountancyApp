@@ -10,8 +10,8 @@ namespace AccountancyApi.DefaultSettings
     {
         public static string Host = "";
         public static int Port = 587;
-        public static string Username = "example@eg.com";
-        public static string Password = "yourPassword";
+        public static string Username = "";
+        public static string Password = "";
         public static bool SslEnabled = true;
     }
 }

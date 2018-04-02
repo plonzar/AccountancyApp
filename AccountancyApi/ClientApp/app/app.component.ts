@@ -13,7 +13,7 @@ import { CommonService } from './services/common.service';
   providers: []
 })
 export class AppComponent implements OnInit {
-  title = 'Rachunkowość';
+  title = 'Księgowość';
   width = window.innerWidth;
   signedIn:boolean;
 

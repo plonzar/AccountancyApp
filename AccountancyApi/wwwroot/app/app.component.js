@@ -20,7 +20,7 @@ var AppComponent = /** @class */ (function () {
         this.invoiceServices = invoiceServices;
         this.userService = userService;
         this.commonData = commonData;
-        this.title = 'Rachunkowość';
+        this.title = 'Księgowość';
         this.width = window.innerWidth;
     }
     AppComponent.prototype.ngOnInit = function () {

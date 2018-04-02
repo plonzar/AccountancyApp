@@ -7,7 +7,7 @@ namespace AccountancyApi.DefaultSettings
 {
     public class MessageConfiguration
     {
-        //this text will be added at the end of your text message
+        //this text will only be added to message if you are using default email settings
 
         public static string postMessageClause = "<br><br>--------------------------<br>Wiadomość została wysłana przez system <strong>Accountancyapp</strong>";
     }
