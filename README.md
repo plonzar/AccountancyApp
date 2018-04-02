@@ -16,5 +16,5 @@ used as default settings for all users and it is also used as target address to 
 when user is configuring SMTP settings.
 Last thing which is not necessary is to configure message footer. It is located in MessageConfiguration 
 class in DefaultSettings folder. This text will be displayed only if user is using default email settings.
-Before you start program, go to project folder and in conole write ng build to make sure that Angular is
+Before you start program, go to project folder and in console write ng build to make sure that Angular is
 complied.
